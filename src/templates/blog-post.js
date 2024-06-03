@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import styled from "styled-components"
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
@@ -20,6 +21,7 @@ const BlogPostTemplate = ({
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
+          <p>Escrito por: {post.frontmatter.author}</p>
           <p>{post.frontmatter.date}</p>
         </header>
         <section
@@ -32,15 +34,7 @@ const BlogPostTemplate = ({
         </footer>
       </article>
       <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+        <Ul>
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
@@ -55,7 +49,7 @@ const BlogPostTemplate = ({
               </Link>
             )}
           </li>
-        </ul>
+        </Ul>
       </nav>
     </Layout>
   )
@@ -69,6 +63,14 @@ export const Head = ({ data: { markdownRemark: post } }) => {
     />
   )
 }
+
+const Ul = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+`
 
 export default BlogPostTemplate
 
@@ -89,7 +91,8 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        author
+        date(formatString: "DD/MM/YYYY")
         description
       }
     }

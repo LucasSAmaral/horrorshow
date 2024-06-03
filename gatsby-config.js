@@ -102,6 +102,7 @@ module.exports = {
                   }
                   frontmatter {
                     title
+                    author
                     date
                   }
                 }
@@ -119,7 +120,7 @@ module.exports = {
         name: `Gatsby Starter Blog`,
         short_name: `Gatsby`,
         start_url: `/`,
-        background_color: `#ffffff`,
+        background_color: `#282c34`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,

@@ -24,7 +24,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Bio />
+      {/* <Bio /> */}
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
@@ -42,7 +42,12 @@ const BlogIndex = ({ data, location }) => {
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{post.frontmatter.date}</small>
+                  <p>
+                    <small>Escrito por: {post.frontmatter.author}</small>
+                  </p>
+                  <p>
+                    <small>{post.frontmatter.date}</small>
+                  </p>
                 </header>
                 <section>
                   <p
@@ -68,7 +73,7 @@ export default BlogIndex
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="All posts" />
+export const Head = () => <Seo title="Todos os posts" />
 
 export const pageQuery = graphql`
   {
@@ -85,6 +90,7 @@ export const pageQuery = graphql`
         }
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
+          author
           title
           description
         }
