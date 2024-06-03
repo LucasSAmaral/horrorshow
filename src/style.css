@@ -258,7 +258,22 @@ a:focus {
   font-size: var(--fontSize-7);
   margin: 0;
   text-align: center;
-  color: rgb(130, 34, 34)
+  color: rgb(130, 34, 34);
+  text-shadow:  
+      1px -1px 0 #2f5d87, 
+      2px -2px 0 #2e5a83, 
+      3px -3px 0 #2d5880, 
+      4px -4px 0 #2b557c, 
+      5px -5px 0 #2a5378, 
+      6px -6px 0 #295074, 
+      7px -7px 0 #274d71, 
+      8px -8px 0 #264b6d, 
+      9px -9px 0 #254869, 
+      10px -10px 0 #234665, 
+      11px -11px 0 #224361, 
+      12px -12px 0 #21405e, 
+      13px -13px 12px rgba(0, 0, 0, 0.55), 
+      13px -13px 1px rgba(0, 0, 0, 0.5);
 }
 
 .post-list-item {
