@@ -34,8 +34,10 @@
     "Noto Color Emoji";
   --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
     Times, serif;
+  --title-font: "Amatic SC", sans-serif;
   --font-body: var(--fontFamily-serif);
   --color-body: #090707;
+  --font-color: #822222;
   --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;
   --fontWeight-bold: 700;
@@ -256,11 +258,11 @@ a:focus {
 }
 
 .main-heading {
-  font-size: 63px;
+  font-size: 80px;
   font-family: "Amatic SC", sans-serif;
   margin: 0;
   text-align: center;
-  color: rgb(130, 34, 34);
+  color: var(--font-color);
   text-shadow:  
       1px -1px 0 #2f5d87, 
       2px -2px 0 #2e5a83, 
@@ -288,8 +290,9 @@ a:focus {
 }
 
 .post-list-item h2 {
-  font-size: var(--fontSize-4);
-  color: var(--color-primary);
+  font-size: 35px;
+  font-family: var(--title-font);
+  color: var(--font-color);
   margin-bottom: var(--spacing-2);
   margin-top: var(--spacing-0);
 }
