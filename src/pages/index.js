@@ -43,10 +43,10 @@ const BlogIndex = ({ data, location }) => {
                     </Link>
                   </h2>
                   <p>
-                    <small>Escrito por: {post.frontmatter.author}</small>
+                    <small>Texto por: {post.frontmatter.author}</small>
                   </p>
                   <p>
-                    <small>{post.frontmatter.date}</small>
+                    <small>Postado em: {post.frontmatter.date}</small>
                   </p>
                 </header>
                 <section>
@@ -89,7 +89,7 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+          date(formatString: "DD/MM/YYYY")
           author
           title
           description
