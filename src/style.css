@@ -1,4 +1,5 @@
 /* CSS Custom Properties Definitions */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 
 :root {
   --maxWidth-none: "none";
@@ -255,7 +256,8 @@ a:focus {
 }
 
 .main-heading {
-  font-size: var(--fontSize-7);
+  font-size: 63px;
+  font-family: "Amatic SC", sans-serif;
   margin: 0;
   text-align: center;
   color: rgb(130, 34, 34);
