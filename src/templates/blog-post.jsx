@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import styled from "styled-components"
 import { StyledLink } from "../components/styled-link"
+import { Disqus } from "gatsby-plugin-disqus"
 
 const BlogPostTemplate = ({
   data: {
@@ -58,6 +59,14 @@ const BlogPostTemplate = ({
           </li>
         </Ul>
       </nav>
+      {/* Trocar a baseUrl ao colocar em produção */}
+      <Disqus
+        config={{
+          url: `http://localhost:8000${location.pathname}`,
+          identifier: post.id,
+          title: post.frontmatter.title,
+        }}
+      />
     </Layout>
   )
 }
