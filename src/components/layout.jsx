@@ -76,6 +76,12 @@ const Aside = styled.aside`
 
   ol {
     list-style: none;
+
+    li {
+      a {
+        color: #fafafa;
+      }
+    }
   }
 `
 

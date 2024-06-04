@@ -6,8 +6,8 @@ import { StaticImage } from "gatsby-plugin-image"
 const HeaderContent = ({ title }) => {
   return (
     <>
-      {/* <TitleWrapper> */}
-      {/* <StaticImage
+      <TitleWrapper>
+        <StaticImage
           className="left-hand"
           layout="fixed"
           formats={["auto", "webp", "avif"]}
@@ -16,9 +16,9 @@ const HeaderContent = ({ title }) => {
           height={88}
           quality={95}
           alt="Profile picture"
-        /> */}
-      <h1 className="main-heading">{title}</h1>
-      {/* <StaticImage
+        />
+        <h1 className="main-heading">{title}</h1>
+        <StaticImage
           className="right-hand"
           layout="fixed"
           formats={["auto", "webp", "avif"]}
@@ -27,8 +27,8 @@ const HeaderContent = ({ title }) => {
           height={88}
           quality={95}
           alt="Profile picture"
-        /> */}
-      {/* </TitleWrapper> */}
+        />
+      </TitleWrapper>
       <Menu>
         <StyledLink to="/">Início</StyledLink>
         <StyledLink to="/sobre">Sobre</StyledLink>
@@ -37,16 +37,16 @@ const HeaderContent = ({ title }) => {
   )
 }
 
-// const TitleWrapper = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 20px;
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 
-//   .right-hand {
-//     transform: scaleX(-1);
-//   }
-// `
+  .right-hand {
+    transform: scaleX(-1);
+  }
+`
 
 const Menu = styled.menu`
   padding: 0;

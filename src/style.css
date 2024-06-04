@@ -87,6 +87,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-body);
   background-image: url("./images/dirty-background.png");
+  background-attachment: fixed;
 }
 
 footer {
