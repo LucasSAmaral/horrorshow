@@ -1,19 +1,26 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import styled from "styled-components"
+import { StyledLink } from "../components/styled-link"
 
 const BlogPostTemplate = ({
-  data: { previous, next, site, markdownRemark: post },
+  data: {
+    previous,
+    next,
+    site,
+    markdownRemark: post,
+    allMarkdownRemark: { nodes: posts },
+  },
   location,
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout posts={posts} location={location} title={siteTitle}>
       <article
         className="blog-post"
         itemScope
@@ -22,7 +29,7 @@ const BlogPostTemplate = ({
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>Texto por: {post.frontmatter.author}</p>
-          <p>Postado em:{post.frontmatter.date}</p>
+          <p>Postado em: {post.frontmatter.date}</p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -37,16 +44,16 @@ const BlogPostTemplate = ({
         <Ul>
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
+              <StyledLink to={previous.fields.slug} rel="prev">
                 ← {previous.frontmatter.title}
-              </Link>
+              </StyledLink>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
+              <StyledLink to={next.fields.slug} rel="next">
                 {next.frontmatter.title} →
-              </Link>
+              </StyledLink>
             )}
           </li>
         </Ul>
@@ -83,6 +90,16 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+        }
       }
     }
     markdownRemark(id: { eq: $id }) {
