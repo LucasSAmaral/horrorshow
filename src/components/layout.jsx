@@ -3,6 +3,8 @@ import HeaderContent from "./header-content"
 import styled from "styled-components"
 import { StyledLink } from "./styled-link"
 
+const recentPostsList = [...Array(3).keys()]
+
 const Layout = ({ posts, location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
@@ -18,21 +20,17 @@ const Layout = ({ posts, location, title, children }) => {
           <div>
             <h5>Posts mais recentes</h5>
             <ol>
-              <li>
-                <StyledLink to={posts?.[0].fields.slug} itemProp="url">
-                  {posts?.[0].frontmatter.title || posts?.[0].fields.slug}
-                </StyledLink>
-              </li>
-              <li>
-                <StyledLink to={posts?.[1].fields.slug} itemProp="url">
-                  {posts?.[1].frontmatter.title || posts?.[1].fields.slug}
-                </StyledLink>
-              </li>
-              <li>
-                <StyledLink to={posts?.[2].fields.slug} itemProp="url">
-                  {posts?.[2].frontmatter.title || posts?.[2].fields.slug}
-                </StyledLink>
-              </li>
+              {recentPostsList.map(postIndex => (
+                <li>
+                  <StyledLink
+                    to={posts?.[postIndex].fields.slug}
+                    itemProp="url"
+                  >
+                    {posts?.[postIndex].frontmatter.title ||
+                      posts?.[postIndex].fields.slug}
+                  </StyledLink>
+                </li>
+              ))}
             </ol>
           </div>
         </Aside>
