@@ -21,8 +21,8 @@ const BlogPostTemplate = ({
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>Escrito por: {post.frontmatter.author}</p>
-          <p>{post.frontmatter.date}</p>
+          <p>Texto por: {post.frontmatter.author}</p>
+          <p>Postado em:{post.frontmatter.date}</p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
