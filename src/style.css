@@ -1,5 +1,5 @@
 /* CSS Custom Properties Definitions */
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
 
 :root {
   --maxWidth-none: "none";
@@ -57,7 +57,7 @@
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
   --color-primary: #005b99;
-  --color-text: #FFFFFE;
+  --color-text: #fffffe;
   --color-text-light: #4f5969;
   --color-heading: #1a202c;
   --color-heading-black: black;
@@ -263,21 +263,11 @@ a:focus {
   margin: 0;
   text-align: center;
   color: var(--font-color);
-  text-shadow:  
-      1px -1px 0 #2f5d87, 
-      2px -2px 0 #2e5a83, 
-      3px -3px 0 #2d5880, 
-      4px -4px 0 #2b557c, 
-      5px -5px 0 #2a5378, 
-      6px -6px 0 #295074, 
-      7px -7px 0 #274d71, 
-      8px -8px 0 #264b6d, 
-      9px -9px 0 #254869, 
-      10px -10px 0 #234665, 
-      11px -11px 0 #224361, 
-      12px -12px 0 #21405e, 
-      13px -13px 12px rgba(0, 0, 0, 0.55), 
-      13px -13px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px -1px 0 #872f2f, 2px -2px 0 #832e2e, 3px -3px 0 #802d2d,
+    4px -4px 0 #7c2b2b, 5px -5px 0 #782a2a, 6px -6px 0 #742929,
+    7px -7px 0 #712727, 8px -8px 0 #6d2626, 9px -9px 0 #692525,
+    10px -10px 0 #652323, 11px -11px 0 #612222, 12px -12px 0 #5e2121,
+    13px -13px 12px rgba(0, 0, 0, 0.55), 13px -13px 1px rgba(0, 0, 0, 0.5);
 }
 
 .post-list-item {
