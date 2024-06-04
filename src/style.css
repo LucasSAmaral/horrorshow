@@ -1,5 +1,7 @@
-/* CSS Custom Properties Definitions */
+/* imported Font */
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+
+/* CSS Custom Properties Definitions */
 
 :root {
   --maxWidth-none: "none";
@@ -37,7 +39,7 @@
   --title-font: "Amatic SC", sans-serif;
   --font-body: var(--fontFamily-serif);
   --color-body: #090707;
-  --font-color: #e92f2f;
+  --title-color: #e92f2f;
   --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;
   --fontWeight-bold: 700;
@@ -88,6 +90,7 @@ body {
 
 footer {
   padding: var(--spacing-6) var(--spacing-0);
+  text-align: center;
 }
 
 hr {
@@ -244,9 +247,7 @@ a:focus {
 /* Custom classes */
 
 .global-wrapper {
-  margin: var(--spacing-0) auto;
-  max-width: var(--maxWidth-wrapper);
-  padding: var(--spacing-10) var(--spacing-5);
+  padding-top: var(--spacing-10);
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
@@ -255,14 +256,18 @@ a:focus {
 
 .global-header {
   margin-bottom: var(--spacing-12);
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .main-heading {
   font-size: 80px;
-  font-family: "Amatic SC", sans-serif;
+  font-family: var(--title-font);
   margin: 0;
   text-align: center;
-  color: var(--font-color);
+  color: var(--title-color);
   text-shadow: 1px -1px 0 #872f2f, 2px -2px 0 #832e2e, 3px -3px 0 #802d2d,
     4px -4px 0 #7c2b2b, 5px -5px 0 #782a2a, 6px -6px 0 #742929,
     7px -7px 0 #712727, 8px -8px 0 #6d2626, 9px -9px 0 #692525,
@@ -282,7 +287,7 @@ a:focus {
 .post-list-item h2 {
   font-size: 35px;
   font-family: var(--title-font);
-  color: var(--font-color);
+  color: var(--title-color);
   margin-bottom: var(--spacing-2);
   margin-top: var(--spacing-0);
 }
@@ -316,11 +321,18 @@ a:focus {
 
 .blog-post header h1 {
   margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
+  font-family: var(--title-font);
+  color: var(--title-color);
 }
 
 .blog-post header p {
-  font-size: var(--fontSize-2);
+  font-size: var(--fontSize-1);
   font-family: var(--font-heading);
+  margin-bottom: 10px;
+}
+
+.blog-post header p:last-child {
+  margin-bottom: 32px;
 }
 
 .blog-post-nav ul {
