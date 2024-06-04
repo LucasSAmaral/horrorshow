@@ -60,6 +60,7 @@ const Wrapper = styled.div`
 
 const Aside = styled.aside`
   position: relative;
+  width: 150px;
 
   div {
     position: fixed;
