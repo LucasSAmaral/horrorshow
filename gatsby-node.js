@@ -116,6 +116,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       author: String
       description: String
+      posterUrl: String
       date: Date @dateformat
     }
 

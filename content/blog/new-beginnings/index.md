@@ -4,7 +4,7 @@ author: Lucas Amaral
 date: "2015-05-28T22:40:32.169Z"
 description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
 usePoster: true
-posterUrl: "https://m.media-amazon.com/images/M/MV5BMTI3OTY4NjcwMl5BMl5BanBnXkFtZTYwMDQ0MTg5._V1_.jpg"
+# posterUrl: https://m.media-amazon.com/images/M/MV5BMTI3OTY4NjcwMl5BMl5BanBnXkFtZTYwMDQ0MTg5._V1_.jpg
 posterImage: ./dagon.jpg
 posterImageAlt: "Poster do filme Dagon"
 ---

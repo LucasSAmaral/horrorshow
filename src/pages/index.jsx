@@ -5,7 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import styled from "styled-components"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import Poster from "../components/poster"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -30,7 +30,6 @@ const BlogIndex = ({ data, location }) => {
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
           const usePoster = post.frontmatter.usePoster
-          // const posterUrl = post.frontmatter.posterUrl
 
           return (
             <li key={post.fields.slug}>
@@ -42,9 +41,10 @@ const BlogIndex = ({ data, location }) => {
                 itemType="http://schema.org/Article"
               >
                 {usePoster && (
-                  <GatsbyImage
-                    image={getImage(post.frontmatter.posterImage)}
-                    alt={post.frontmatter.posterImageAlt}
+                  <Poster
+                    posterUrl={post.frontmatter.posterUrl}
+                    posterImage={post.frontmatter.posterImage}
+                    posterImageAlt={post.frontmatter.posterImageAlt}
                   />
                 )}
                 <div>
