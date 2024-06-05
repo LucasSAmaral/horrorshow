@@ -4,6 +4,8 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import styled from "styled-components"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -24,46 +26,82 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout posts={posts} location={location} title={siteTitle}>
-      <ol style={{ listStyle: `none` }}>
+      <Ol>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
+          const usePoster = post.frontmatter.usePoster
+          // const posterUrl = post.frontmatter.posterUrl
 
           return (
             <li key={post.fields.slug}>
               <article
-                className="post-list-item"
+                className={`post-list-item ${
+                  usePoster ? "with-poster" : "no-poster"
+                }`}
                 itemScope
                 itemType="http://schema.org/Article"
               >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <p>
-                    <small>Texto por: {post.frontmatter.author}</small>
-                  </p>
-                  <p>
-                    <small>Postado em: {post.frontmatter.date}</small>
-                  </p>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
+                {usePoster && (
+                  <GatsbyImage
+                    image={getImage(post.frontmatter.posterImage)}
+                    alt={post.frontmatter.posterImageAlt}
                   />
-                </section>
+                )}
+                <div>
+                  <header>
+                    <h2>
+                      <Link to={post.fields.slug} itemProp="url">
+                        <span itemProp="headline">{title}</span>
+                      </Link>
+                    </h2>
+                    <p>
+                      <small>Texto por: {post.frontmatter.author}</small>
+                    </p>
+                    <p>
+                      <small>Postado em: {post.frontmatter.date}</small>
+                    </p>
+                  </header>
+                  <section>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: post.frontmatter.description || post.excerpt,
+                      }}
+                      itemProp="description"
+                    />
+                  </section>
+                </div>
               </article>
             </li>
           )
         })}
-      </ol>
+      </Ol>
     </Layout>
   )
 }
+
+const Ol = styled.ol`
+  list-style: none;
+
+  li {
+    .with-poster {
+      display: flex;
+      gap: 15px;
+
+      .gatsby-image-wrapper {
+        overflow: visible;
+      }
+
+      img {
+        width: auto;
+        height: 188px;
+      }
+    }
+
+    .no-poster {
+      display: block;
+    }
+  }
+`
 
 export default BlogIndex
 
@@ -92,6 +130,18 @@ export const pageQuery = graphql`
           author
           title
           description
+          usePoster
+          posterUrl
+          posterImageAlt
+          posterImage {
+            childImageSharp {
+              gatsbyImageData(
+                height: 188
+                layout: FIXED
+                blurredOptions: { width: 100 }
+              )
+            }
+          }
         }
       }
     }
