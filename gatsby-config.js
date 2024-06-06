@@ -13,7 +13,11 @@ module.exports = {
     author: [
       {
         name: `Lucas Amaral`,
-        summary: `Teste`,
+        summary: [
+          `Tinha medo de filmes de terror quando criança. Hoje é o gênero que ele mais assiste.`,
+          `Desenvolvedor Front-End de profissão. Crítico amador de cinema
+                  nas horas vagas.`,
+        ],
         social: {
           twitter: `kylemathews`,
         },

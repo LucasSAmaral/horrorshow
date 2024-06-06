@@ -47,7 +47,7 @@ const Bio = ({ postAuthor }) => {
             width={50}
             height={50}
             quality={95}
-            alt="Profile picture"
+            alt="Imagem de perfil do Lucas na base da torre Eiffel"
           />
           <div>
             {author?.name && (
@@ -55,7 +55,9 @@ const Bio = ({ postAuthor }) => {
                 <p>
                   Escrito por <strong>{author.name}</strong>
                 </p>
-                <p>{author?.summary || null}</p>
+                {author?.summary.map(paragraph => (
+                  <p>{paragraph}</p>
+                ))}
 
                 <p>
                   <a
@@ -94,7 +96,7 @@ const Bio = ({ postAuthor }) => {
                 <p>
                   Escrito por <strong>{author.name}</strong>
                 </p>
-                <p>{author?.summary || null}</p>
+                {/* <p>{author?.summary || null}</p> */}
 
                 <p>
                   <a
@@ -133,7 +135,7 @@ const Bio = ({ postAuthor }) => {
                 <p>
                   Escrito por <strong>{author.name}</strong>
                 </p>
-                <p>{author?.summary || null}</p>
+                {/* <p>{author?.summary || null}</p> */}
 
                 <p>
                   <a
