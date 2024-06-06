@@ -1,6 +1,6 @@
 ---
 title: My Second Post!
-author: Lucas Amaral
+author: Boby
 date: "2015-05-06T23:46:37.121Z"
 ---
 

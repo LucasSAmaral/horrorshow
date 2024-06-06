@@ -10,12 +10,19 @@
 module.exports = {
   siteMetadata: {
     title: `Horrorshow`,
-    author: {
-      name: `Lucas Amaral`,
-      summary: `Teste`,
-    },
+    author: [
+      {
+        name: `Lucas Amaral`,
+        summary: `Teste`,
+        social: {
+          twitter: `kylemathews`,
+        },
+      },
+      { name: `Boby`, summary: `Teste2` },
+      { name: `Jack`, summary: `Teste3` },
+    ],
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    siteUrl: `http://www.horrorshow.com.br`,
     social: {
       twitter: `kylemathews`,
     },
@@ -102,8 +109,8 @@ module.exports = {
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
                   custom_elements: [{ "content:encoded": node.html }],
-                })
-              })
+                });
+              });
             },
             query: `{
               allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
@@ -142,4 +149,4 @@ module.exports = {
       },
     },
   ],
-}
+};

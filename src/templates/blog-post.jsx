@@ -1,12 +1,12 @@
-import * as React from "react"
-import { graphql } from "gatsby"
+import * as React from "react";
+import { graphql } from "gatsby";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import styled from "styled-components"
-import { StyledLink } from "../components/styled-link"
-import { Disqus } from "gatsby-plugin-disqus"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import styled from "styled-components";
+import { StyledLink } from "../components/styled-link";
+import { Disqus } from "gatsby-plugin-disqus";
 
 const BlogPostTemplate = ({
   data: {
@@ -18,7 +18,7 @@ const BlogPostTemplate = ({
   },
   location,
 }) => {
-  const siteTitle = site.siteMetadata?.title || `Title`
+  const siteTitle = site.siteMetadata?.title || `Title`;
 
   return (
     <Layout posts={posts} location={location} title={siteTitle}>
@@ -38,7 +38,7 @@ const BlogPostTemplate = ({
         />
         <hr />
         <footer>
-          <Bio />
+          <Bio postAuthor={post.frontmatter.author} />
         </footer>
       </article>
       <nav className="blog-post-nav">
@@ -68,8 +68,8 @@ const BlogPostTemplate = ({
         }}
       />
     </Layout>
-  )
-}
+  );
+};
 
 export const Head = ({ data: { markdownRemark: post } }) => {
   return (
@@ -77,8 +77,8 @@ export const Head = ({ data: { markdownRemark: post } }) => {
       title={post.frontmatter.title}
       description={post.frontmatter.description || post.excerpt}
     />
-  )
-}
+  );
+};
 
 const Ul = styled.ul`
   display: flex;
@@ -86,9 +86,9 @@ const Ul = styled.ul`
   justify-content: space-between;
   list-style: none;
   padding: 0;
-`
+`;
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
@@ -139,4 +139,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
