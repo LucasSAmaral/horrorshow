@@ -1,15 +1,16 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import * as React from "react";
+import { Link, graphql } from "gatsby";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import styled from "styled-components"
-import Poster from "../components/poster"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import styled from "styled-components";
+import Poster from "../components/poster";
+import { StyledLink } from "../components/styled-link";
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const posts = data.allMarkdownRemark.nodes;
 
   if (posts.length === 0) {
     return (
@@ -21,15 +22,15 @@ const BlogIndex = ({ data, location }) => {
           gatsby-config.js).
         </p>
       </Layout>
-    )
+    );
   }
 
   return (
     <Layout posts={posts} location={location} title={siteTitle}>
       <Ol>
         {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
-          const usePoster = post.frontmatter.usePoster
+          const title = post.frontmatter.title || post.fields.slug;
+          const usePoster = post.frontmatter.usePoster;
 
           return (
             <li key={post.fields.slug}>
@@ -62,22 +63,24 @@ const BlogIndex = ({ data, location }) => {
                     </p>
                   </header>
                   <section>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: post.frontmatter.description || post.excerpt,
-                      }}
-                      itemProp="description"
-                    />
+                    <p itemProp="description">
+                      {post.frontmatter.description || post.excerpt}{" "}
+                    </p>
+                    <p>
+                      <StyledLink to={post.fields.slug} itemProp="url">
+                        Leia +
+                      </StyledLink>
+                    </p>
                   </section>
                 </div>
               </article>
             </li>
-          )
+          );
         })}
       </Ol>
     </Layout>
-  )
-}
+  );
+};
 
 const Ol = styled.ol`
   list-style: none;
@@ -101,16 +104,16 @@ const Ol = styled.ol`
       display: block;
     }
   }
-`
+`;
 
-export default BlogIndex
+export default BlogIndex;
 
 /**
  * Head export to define metadata for the page
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="Todos os posts" />
+export const Head = () => <Seo title="Todos os posts" />;
 
 export const pageQuery = graphql`
   {
@@ -146,4 +149,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
