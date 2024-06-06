@@ -7,6 +7,7 @@ import Seo from "../components/seo";
 import styled from "styled-components";
 import { StyledLink } from "../components/styled-link";
 import { Disqus } from "gatsby-plugin-disqus";
+import TagsComponent from "../components/tags-component";
 
 const BlogPostTemplate = ({
   data: {
@@ -32,6 +33,9 @@ const BlogPostTemplate = ({
           <p>Texto por: {post.frontmatter.author}</p>
           <p>Postado em: {post.frontmatter.date}</p>
         </header>
+        <TagsComponentWrapper>
+          <TagsComponent tags={post.frontmatter.tags} />
+        </TagsComponentWrapper>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
@@ -80,6 +84,10 @@ export const Head = ({ data: { markdownRemark: post } }) => {
   );
 };
 
+const TagsComponentWrapper = styled.div`
+  margin-bottom: 32px;
+`;
+
 const Ul = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -120,6 +128,7 @@ export const pageQuery = graphql`
         author
         date(formatString: "DD/MM/YYYY")
         description
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

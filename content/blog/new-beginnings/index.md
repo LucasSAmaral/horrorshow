@@ -8,7 +8,7 @@ usePoster: true
 # posterUrl: /static/fb23991d0f54db9e5c5f9cb13547706a/296f7/dagon.webp
 posterImage: ./dagon.jpg
 posterImageAlt: "Poster do filme Dagon"
-tags: ["dagon", "Lovecraft", "Cósmico"]
+tags: ["dagon", "lovecraft", "cosmico"]
 ---
 
 Far far away, behind the word mountains, far from the countries Vokalia and

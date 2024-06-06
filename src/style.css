@@ -295,7 +295,7 @@ a:focus {
 }
 
 .post-list-item header {
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing-2);
 }
 
 .header-link-home {
@@ -334,9 +334,9 @@ a:focus {
   margin-bottom: 10px;
 }
 
-.blog-post header p:last-child {
+/* .blog-post header p:last-child {
   margin-bottom: 32px;
-}
+} */
 
 .blog-post-nav ul {
   margin: var(--spacing-0);

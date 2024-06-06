@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, graphql, navigate } from "gatsby";
+import { Link, graphql } from "gatsby";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
@@ -7,6 +7,7 @@ import Seo from "../components/seo";
 import styled from "styled-components";
 import Poster from "../components/poster";
 import { StyledLink } from "../components/styled-link";
+import TagsComponent from "../components/tags-component";
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
@@ -63,21 +64,9 @@ const BlogIndex = ({ data, location }) => {
                       <small>Postado em: {post.frontmatter.date}</small>
                     </p>
                   </header>
-                  <TagsWrapper>
-                    {tags?.map(tag => {
-                      return (
-                        <Tag
-                          key={tag}
-                          variant="outlined"
-                          onClick={event => {
-                            navigate(`/tag/${tag}`);
-                          }}
-                        >
-                          <p>{tag}</p>
-                        </Tag>
-                      );
-                    })}
-                  </TagsWrapper>
+
+                  <TagsComponent tags={tags} />
+
                   <section>
                     <p itemProp="description">
                       {post.frontmatter.description || post.excerpt}{" "}
@@ -120,23 +109,6 @@ const Ol = styled.ol`
       display: block;
     }
   }
-`;
-
-const TagsWrapper = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 2%;
-  font-size: 12px;
-  color: grey;
-`;
-
-const Tag = styled.div`
-  margin-right: 2.5%;
-  margin-left: 2.5%;
-  cursor: pointer;
-  white-space: nowrap;
 `;
 
 export default BlogIndex;
