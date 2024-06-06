@@ -334,10 +334,6 @@ a:focus {
   margin-bottom: 10px;
 }
 
-/* .blog-post header p:last-child {
-  margin-bottom: 32px;
-} */
-
 .blog-post-nav ul {
   margin: var(--spacing-0);
 }
