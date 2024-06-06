@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
+import { Link, graphql, navigate } from "gatsby";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
@@ -31,6 +31,7 @@ const BlogIndex = ({ data, location }) => {
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug;
           const usePoster = post.frontmatter.usePoster;
+          const tags = post.frontmatter.tags;
 
           return (
             <li key={post.fields.slug}>
@@ -62,6 +63,21 @@ const BlogIndex = ({ data, location }) => {
                       <small>Postado em: {post.frontmatter.date}</small>
                     </p>
                   </header>
+                  <TagsWrapper>
+                    {tags?.map(tag => {
+                      return (
+                        <Tag
+                          key={tag}
+                          variant="outlined"
+                          onClick={event => {
+                            navigate(`/tag/${tag}`);
+                          }}
+                        >
+                          <p>{tag}</p>
+                        </Tag>
+                      );
+                    })}
+                  </TagsWrapper>
                   <section>
                     <p itemProp="description">
                       {post.frontmatter.description || post.excerpt}{" "}
@@ -106,6 +122,23 @@ const Ol = styled.ol`
   }
 `;
 
+const TagsWrapper = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2%;
+  font-size: 12px;
+  color: grey;
+`;
+
+const Tag = styled.div`
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  cursor: pointer;
+  white-space: nowrap;
+`;
+
 export default BlogIndex;
 
 /**
@@ -133,6 +166,7 @@ export const pageQuery = graphql`
           author
           title
           description
+          tags
           usePoster
           posterUrl
           posterImageAlt
