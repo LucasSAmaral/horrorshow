@@ -1,17 +1,20 @@
 import * as React from "react";
 import styled from "styled-components";
 import { navigate } from "gatsby";
+import _ from "lodash";
 
 const TagsComponent = ({ tags, className }) => {
   return (
     <TagsWrapper className={className}>
       {tags?.map(tag => {
+        const kebabCaseTag = _.kebabCase(tag);
+
         return (
           <Tag
             key={tag}
             variant="outlined"
             onClick={() => {
-              navigate(`/tag/${tag}`);
+              navigate(`/tag/${kebabCaseTag}`);
             }}
           >
             <p>{tag}</p>

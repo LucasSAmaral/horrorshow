@@ -9,8 +9,6 @@ const Layout = ({ posts, location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
 
-  console.log("posts", posts);
-
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
       <header className="global-header">
@@ -82,7 +80,7 @@ const Aside = styled.aside`
     position: fixed;
 
     @media (max-width: 1180px) {
-     position: inherit;
+      position: inherit;
     }
   }
 
