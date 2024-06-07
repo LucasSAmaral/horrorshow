@@ -33,6 +33,11 @@ const RelatedPosts = ({ title, posts }) => {
 };
 
 const Wrapper = styled.div`
+  h1 {
+    text-align: center;
+    margin-top: 0;
+  }
+
   h1,
   h3 {
     font-family: var(--title-font);
@@ -40,7 +45,7 @@ const Wrapper = styled.div`
   }
 
   h3 {
-    font-size: var(--fontSize-5);
+    font-size: 35px;
   }
 
   p {

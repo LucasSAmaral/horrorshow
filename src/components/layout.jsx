@@ -5,9 +5,19 @@ import { StyledLink } from "./styled-link";
 
 const recentPostsList = [...Array(3).keys()];
 
+const shouldShowAside = pathName => {
+  return !(
+    pathName.includes("/author/") ||
+    pathName.includes("/busca/") ||
+    pathName.includes("/tag/")
+  );
+};
+
 const Layout = ({ posts, location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
+
+  const showAside = shouldShowAside(location.pathname);
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
@@ -16,35 +26,34 @@ const Layout = ({ posts, location, title, children }) => {
       </header>
 
       <Wrapper>
-        <Aside>
-          {posts.length >= 3 && (
-            <div>
-              <h5>Posts mais recentes</h5>
-              <ol>
-                {recentPostsList.map(postIndex => (
-                  <li>
-                    <StyledLink
-                      to={posts?.[postIndex].fields.slug}
-                      itemProp="url"
-                    >
-                      {posts?.[postIndex].frontmatter.title ||
-                        posts?.[postIndex].fields.slug}
-                    </StyledLink>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          )}
-        </Aside>
-        <MainWrapper>
+        {showAside && (
+          <Aside>
+            {posts.length >= 3 && (
+              <div>
+                <h5>Posts mais recentes</h5>
+                <ol>
+                  {recentPostsList.map(postIndex => (
+                    <li>
+                      <StyledLink
+                        to={posts?.[postIndex].fields.slug}
+                        itemProp="url"
+                      >
+                        {posts?.[postIndex].frontmatter.title ||
+                          posts?.[postIndex].fields.slug}
+                      </StyledLink>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+          </Aside>
+        )}
+
+        <MainWrapper className={!showAside ? "wrapper-flex" : ""}>
           <main>{children}</main>
         </MainWrapper>
       </Wrapper>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </footer>
+      <footer>© Horrorshow {new Date().getFullYear()}</footer>
     </div>
   );
 };
@@ -106,6 +115,11 @@ const Aside = styled.aside`
 const MainWrapper = styled.div`
   width: 100%;
   max-width: 900px;
+
+  &.wrapper-flex {
+    display: flex;
+    justify-content: center;
+  }
 
   @media (max-width: 1180px) {
     display: flex;

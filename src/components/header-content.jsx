@@ -1,7 +1,7 @@
-import * as React from "react"
-import styled from "styled-components"
-import { StyledLink } from "./styled-link"
-import { StaticImage } from "gatsby-plugin-image"
+import * as React from "react";
+import styled from "styled-components";
+import { StyledLink } from "./styled-link";
+import { StaticImage } from "gatsby-plugin-image";
 
 const HeaderContent = ({ title }) => {
   return (
@@ -29,11 +29,12 @@ const HeaderContent = ({ title }) => {
       </TitleWrapper>
       <Menu>
         <StyledLink to="/">Início</StyledLink>
+        <StyledLink to="/busca">Busca</StyledLink>
         <StyledLink to="/sobre">Sobre</StyledLink>
       </Menu>
     </>
-  )
-}
+  );
+};
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -50,7 +51,7 @@ const TitleWrapper = styled.div`
       display: none;
     }
   }
-`
+`;
 
 const Menu = styled.menu`
   padding: 0;
@@ -60,6 +61,6 @@ const Menu = styled.menu`
   display: flex;
   justify-content: center;
   gap: 20px;
-`
+`;
 
-export default HeaderContent
+export default HeaderContent;
