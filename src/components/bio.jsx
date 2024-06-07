@@ -6,11 +6,16 @@
  */
 
 import * as React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
+import _ from "lodash";
 
 const getAuthor = (postAuthor, authorArray) => {
   return authorArray.find(author => author.name === postAuthor);
+};
+
+const getAuthorPath = postAuthor => {
+  return `/author/${_.kebabCase(postAuthor)}`;
 };
 
 const Bio = ({ postAuthor }) => {
@@ -36,6 +41,7 @@ const Bio = ({ postAuthor }) => {
   switch (postAuthor) {
     case "Lucas Amaral": {
       const author = getAuthor(postAuthor, authorArray);
+      const authorPath = getAuthorPath(postAuthor);
 
       return (
         <div className="bio">
@@ -53,7 +59,10 @@ const Bio = ({ postAuthor }) => {
             {author?.name && (
               <>
                 <p>
-                  Escrito por <strong>{author.name}</strong>
+                  Escrito por{" "}
+                  <Link className="author-link" to={authorPath}>
+                    {author.name}
+                  </Link>
                 </p>
                 {author?.summary.map(paragraph => (
                   <p>{paragraph}</p>
@@ -77,6 +86,7 @@ const Bio = ({ postAuthor }) => {
 
     case "Boby": {
       const author = getAuthor(postAuthor, authorArray);
+      const authorPath = getAuthorPath(postAuthor);
 
       return (
         <div className="bio">
@@ -94,7 +104,10 @@ const Bio = ({ postAuthor }) => {
             {author?.name && (
               <>
                 <p>
-                  Escrito por <strong>{author.name}</strong>
+                  Escrito por{" "}
+                  <Link className="author-link" to={authorPath}>
+                    {author.name}
+                  </Link>
                 </p>
                 {/* <p>{author?.summary || null}</p> */}
 
@@ -116,6 +129,7 @@ const Bio = ({ postAuthor }) => {
 
     case "Jack": {
       const author = getAuthor(postAuthor, authorArray);
+      const authorPath = getAuthorPath(postAuthor);
 
       return (
         <div className="bio">
@@ -133,7 +147,10 @@ const Bio = ({ postAuthor }) => {
             {author?.name && (
               <>
                 <p>
-                  Escrito por <strong>{author.name}</strong>
+                  Escrito por{" "}
+                  <Link className="author-link" to={authorPath}>
+                    {author.name}
+                  </Link>
                 </p>
                 {/* <p>{author?.summary || null}</p> */}
 

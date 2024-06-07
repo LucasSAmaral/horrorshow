@@ -12,6 +12,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.jsx`);
 const tagsTemplate = path.resolve(`./src/templates/tags.jsx`);
+const authorsTemplate = path.resolve(`./src/templates/authors.jsx`);
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -37,6 +38,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
       tagsGroup: allMarkdownRemark(limit: 2000) {
         group(field: { frontmatter: { tags: SELECT } }) {
+          fieldValue
+        }
+      }
+      authorsGroup: allMarkdownRemark(limit: 2000) {
+        group(field: { frontmatter: { author: SELECT } }) {
           fieldValue
         }
       }
@@ -85,6 +91,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: tagsTemplate,
       context: {
         tag: tag.fieldValue,
+      },
+    });
+  });
+
+  const authors = result.data.authorsGroup.group;
+
+  authors.forEach(author => {
+    const kebabCaseAuthor = _.kebabCase(author.fieldValue);
+
+    createPage({
+      path: `/author/${kebabCaseAuthor}/`,
+      component: authorsTemplate,
+      context: {
+        author: author.fieldValue,
       },
     });
   });

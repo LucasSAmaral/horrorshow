@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import RelatedPosts from "../components/related-posts";
 
-const Tags = ({
+const Authors = ({
   pageContext,
   data: {
     site,
@@ -12,23 +12,23 @@ const Tags = ({
   },
   location,
 }) => {
-  const { tag } = pageContext;
+  const { author } = pageContext;
 
   const siteTitle = site.siteMetadata?.title || `Horrorshow`;
 
-  const tagTitle = `${totalCount} ${
+  const authorTitle = `${totalCount} ${
     totalCount === 1 ? "postagem" : "postagens"
-  } marcada${totalCount === 1 ? "" : "s"} com "${tag}"`;
+  } escrita${totalCount === 1 ? "" : "s"} por "${author}"`;
 
   return (
     <Layout posts={posts} location={location} title={siteTitle}>
-      <RelatedPosts title={tagTitle} posts={posts} />
+      <RelatedPosts title={authorTitle} posts={posts} />
     </Layout>
   );
 };
 
-Tags.propTypes = {
-  pageContext: PropTypes.shape({ tag: PropTypes.string.isRequired }),
+Authors.propTypes = {
+  pageContext: PropTypes.shape({ author: PropTypes.string.isRequired }),
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       totalCount: PropTypes.number.isRequired,
@@ -42,10 +42,10 @@ Tags.propTypes = {
   }),
 };
 
-export default Tags;
+export default Authors;
 
 export const pageQuery = graphql`
-  query ($tag: String) {
+  query ($author: String) {
     site {
       siteMetadata {
         title
@@ -54,7 +54,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       limit: 2000
       sort: { fields: { slug: DESC } }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: { frontmatter: { author: { in: [$author] } } }
     ) {
       totalCount
       nodes {

@@ -8,9 +8,10 @@ import styled from "styled-components";
 import Poster from "../components/poster";
 import { StyledLink } from "../components/styled-link";
 import TagsComponent from "../components/tags-component";
+import _ from "lodash";
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const siteTitle = data.site.siteMetadata?.title || `Horrorshow`;
   const posts = data.allMarkdownRemark.nodes;
 
   if (posts.length === 0) {
@@ -32,7 +33,10 @@ const BlogIndex = ({ data, location }) => {
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug;
           const usePoster = post.frontmatter.usePoster;
+          const author = post.frontmatter.author;
           const tags = post.frontmatter.tags;
+
+          const kebabCaseAuthor = _.kebabCase(author);
 
           return (
             <li key={post.fields.slug}>
@@ -58,7 +62,15 @@ const BlogIndex = ({ data, location }) => {
                       </Link>
                     </h2>
                     <p>
-                      <small>Texto por: {post.frontmatter.author}</small>
+                      <small>
+                        Texto por:{" "}
+                        <Link
+                          className="author-link"
+                          to={`/author/${kebabCaseAuthor}`}
+                        >
+                          {author}
+                        </Link>
+                      </small>
                     </p>
                     <p>
                       <small>Postado em: {post.frontmatter.date}</small>
@@ -104,12 +116,12 @@ const Ol = styled.ol`
 
       .gatsby-image-wrapper {
         overflow: visible;
-        
+
         @media (max-width: 768px) {
           width: 100%;
 
           img {
-            height: auto
+            height: auto;
           }
         }
       }

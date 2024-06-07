@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
@@ -8,6 +8,7 @@ import styled from "styled-components";
 import { StyledLink } from "../components/styled-link";
 import { Disqus } from "gatsby-plugin-disqus";
 import TagsComponent from "../components/tags-component";
+import _ from "lodash";
 
 const BlogPostTemplate = ({
   data: {
@@ -19,7 +20,10 @@ const BlogPostTemplate = ({
   },
   location,
 }) => {
-  const siteTitle = site.siteMetadata?.title || `Title`;
+  const siteTitle = site.siteMetadata?.title || `Horrorshow`;
+  const author = post.frontmatter.author;
+
+  const kebabCaseAuthor = _.kebabCase(author);
 
   return (
     <Layout posts={posts} location={location} title={siteTitle}>
@@ -30,7 +34,12 @@ const BlogPostTemplate = ({
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>Texto por: {post.frontmatter.author}</p>
+          <p>
+            Texto por:{" "}
+            <Link className="author-link" to={`/author/${kebabCaseAuthor}`}>
+              {author}
+            </Link>
+          </p>
           <p>Postado em: {post.frontmatter.date}</p>
         </header>
         <TagsComponentWrapper>
