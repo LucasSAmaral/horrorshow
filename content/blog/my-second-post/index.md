@@ -2,6 +2,7 @@
 title: My Second Post!
 author: Boby
 date: "2015-05-06T23:46:37.121Z"
+tags: ["lovecraft", "cosmico"]
 ---
 
 Wow! I love blogging so much already.

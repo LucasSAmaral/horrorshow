@@ -205,11 +205,11 @@ li > ul {
 }
 
 blockquote {
-  color: var(--color-text-light);
+  color: var(--font-body);
   margin-left: calc(-1 * var(--spacing-6));
   margin-right: var(--spacing-8);
   padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-6);
-  border-left: var(--spacing-1) solid var(--color-primary);
+  border-left: var(--spacing-1) solid var(--title-color);
   font-size: var(--fontSize-2);
   font-style: italic;
   margin-bottom: var(--spacing-8);
@@ -236,6 +236,10 @@ table thead tr th {
 }
 
 /* Link */
+
+.blog-post a {
+  color: var(--color-text);
+}
 
 a {
   color: var(--color-primary);
@@ -324,6 +328,14 @@ a:focus {
 
 .blog-post header h1 {
   margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
+}
+
+.blog-post h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--title-font);
   color: var(--title-color);
 }

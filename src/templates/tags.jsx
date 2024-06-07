@@ -2,6 +2,8 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
+import styled from "styled-components";
+import { StyledLink } from "../components/styled-link";
 
 const Tags = ({
   pageContext,
@@ -21,7 +23,7 @@ const Tags = ({
 
   return (
     <Layout posts={posts} location={location} title={siteTitle}>
-      <div>
+      <TagsWrapper>
         <h1>{tagHeader}</h1>
 
         <ul>
@@ -38,12 +40,13 @@ const Tags = ({
                 </header>
                 <section>
                   <p>{post.frontmatter.description || post.excerpt}</p>
+                  <StyledLink to={slug}>Leia +</StyledLink>
                 </section>
               </article>
             );
           })}
         </ul>
-      </div>
+      </TagsWrapper>
     </Layout>
   );
 };
@@ -62,6 +65,22 @@ Tags.propTypes = {
     }),
   }),
 };
+
+const TagsWrapper = styled.div`
+  h1,
+  h3 {
+    font-family: var(--title-font);
+    color: var(--title-color);
+  }
+
+  h3 {
+    font-size: var(--fontSize-5);
+  }
+
+  p {
+    margin: 0;
+  }
+`;
 
 export default Tags;
 
