@@ -346,6 +346,12 @@ h6 {
   margin-bottom: 10px;
 }
 
+.author-link {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: inherit;
+}
+
 .blog-post-nav ul {
   margin: var(--spacing-0);
 }
