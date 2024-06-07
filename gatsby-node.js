@@ -5,10 +5,13 @@
  */
 
 const path = require(`path`);
+const _ = require("lodash");
+
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.jsx`);
+const tagsTemplate = path.resolve(`./src/templates/tags.jsx`);
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -22,9 +25,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
         nodes {
           id
+          frontmatter {
+            title
+            description
+            date
+          }
           fields {
             slug
           }
+        }
+      }
+      tagsGroup: allMarkdownRemark(limit: 2000) {
+        group(field: { frontmatter: { tags: SELECT } }) {
+          fieldValue
         }
       }
     }
@@ -61,6 +74,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
   }
+
+  const tags = result.data.tagsGroup.group;
+
+  tags.forEach(tag => {
+    createPage({
+      path: `/tag/${_.kebabCase(tag.fieldValue)}/`,
+      component: tagsTemplate,
+      context: {
+        tag: tag.fieldValue,
+      },
+    });
+  });
 };
 
 /**

@@ -7,6 +7,7 @@ import Seo from "../components/seo";
 import styled from "styled-components";
 import Poster from "../components/poster";
 import { StyledLink } from "../components/styled-link";
+import TagsComponent from "../components/tags-component";
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
@@ -31,6 +32,7 @@ const BlogIndex = ({ data, location }) => {
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug;
           const usePoster = post.frontmatter.usePoster;
+          const tags = post.frontmatter.tags;
 
           return (
             <li key={post.fields.slug}>
@@ -62,6 +64,9 @@ const BlogIndex = ({ data, location }) => {
                       <small>Postado em: {post.frontmatter.date}</small>
                     </p>
                   </header>
+
+                  <TagsComponent tags={tags} />
+
                   <section>
                     <p itemProp="description">
                       {post.frontmatter.description || post.excerpt}{" "}
@@ -90,18 +95,36 @@ const Ol = styled.ol`
       display: flex;
       gap: 15px;
 
-      .gatsby-image-wrapper {
-        overflow: visible;
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 25px;
       }
 
-      img {
-        width: auto;
-        height: 188px;
+      .gatsby-image-wrapper {
+        overflow: visible;
+        
+        @media (max-width: 768px) {
+          width: 100%;
+
+          img {
+            height: auto
+          }
+        }
       }
     }
 
     .no-poster {
       display: block;
+
+      @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 25px;
+      }
     }
   }
 `;
@@ -133,15 +156,16 @@ export const pageQuery = graphql`
           author
           title
           description
+          tags
           usePoster
           posterUrl
           posterImageAlt
           posterImage {
             childImageSharp {
               gatsbyImageData(
-                height: 188
+                width: 188
                 layout: FIXED
-                blurredOptions: { width: 100 }
+                blurredOptions: { width: 188 }
               )
             }
           }

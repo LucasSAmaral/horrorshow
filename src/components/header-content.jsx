@@ -12,7 +12,6 @@ const HeaderContent = ({ title }) => {
           layout="fixed"
           formats={["auto", "webp", "avif"]}
           src="../images/blood-hand.png"
-          width={88}
           height={88}
           quality={95}
           alt="Profile picture"
@@ -23,7 +22,6 @@ const HeaderContent = ({ title }) => {
           layout="fixed"
           formats={["auto", "webp", "avif"]}
           src="../images/blood-hand.png"
-          width={88}
           height={88}
           quality={95}
           alt="Profile picture"
@@ -45,6 +43,12 @@ const TitleWrapper = styled.div`
 
   .right-hand {
     transform: scaleX(-1);
+  }
+
+  @media (max-width: 375px) {
+    img {
+      display: none;
+    }
   }
 `
 
