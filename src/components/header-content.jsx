@@ -44,6 +44,12 @@ const TitleWrapper = styled.div`
   .right-hand {
     transform: scaleX(-1);
   }
+
+  @media (max-width: 375px) {
+    img {
+      display: none;
+    }
+  }
 `
 
 const Menu = styled.menu`

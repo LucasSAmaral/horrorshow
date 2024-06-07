@@ -95,18 +95,36 @@ const Ol = styled.ol`
       display: flex;
       gap: 15px;
 
-      .gatsby-image-wrapper {
-        overflow: visible;
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 25px;
       }
 
-      img {
-        width: auto;
-        height: 188px;
+      .gatsby-image-wrapper {
+        overflow: visible;
+        
+        @media (max-width: 768px) {
+          width: 100%;
+
+          img {
+            height: auto
+          }
+        }
       }
     }
 
     .no-poster {
       display: block;
+
+      @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 25px;
+      }
     }
   }
 `;
@@ -145,9 +163,9 @@ export const pageQuery = graphql`
           posterImage {
             childImageSharp {
               gatsbyImageData(
-                height: 188
+                width: 188
                 layout: FIXED
-                blurredOptions: { width: 100 }
+                blurredOptions: { width: 188 }
               )
             }
           }

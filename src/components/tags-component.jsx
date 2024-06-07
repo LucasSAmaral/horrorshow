@@ -28,6 +28,10 @@ const TagsWrapper = styled.div`
   align-items: center;
   margin-bottom: var(--spacing-2);
   font-size: 19px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const Tag = styled.div`

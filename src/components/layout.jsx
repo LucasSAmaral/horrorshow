@@ -55,8 +55,17 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
 
+  @media (max-width: 1180px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   main {
     max-width: var(--maxWidth-wrapper);
+
+    @media (max-width: 1180px) {
+      max-width: 625px;
+    }
   }
 `;
 
@@ -64,8 +73,17 @@ const Aside = styled.aside`
   position: relative;
   width: 150px;
 
+  @media (max-width: 1180px) {
+    width: auto;
+    text-align: center;
+  }
+
   div {
     position: fixed;
+
+    @media (max-width: 1180px) {
+     position: inherit;
+    }
   }
 
   h5 {
@@ -90,6 +108,11 @@ const Aside = styled.aside`
 const MainWrapper = styled.div`
   width: 100%;
   max-width: 900px;
+
+  @media (max-width: 1180px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export default Layout;
