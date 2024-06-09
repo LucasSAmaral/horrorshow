@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+ });
+
 /**
  * Configure your Gatsby site with this file.
  *
@@ -19,20 +23,38 @@ module.exports = {
                   nas horas vagas.`,
         ],
         social: {
-          twitter: `kylemathews`,
+          twitter: `a definir`,
         },
       },
       { name: `Boby`, summary: [`Teste2`] },
       { name: `Jack`, summary: [`Teste3`] },
     ],
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `Críticas e resenhas sobre filmes de terror (ou não)`,
     siteUrl: `http://www.horrorshow.com.br`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `horrorshow_br`,
     },
   },
   plugins: [
     `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          process.env.GA_ID, // Google Analytics / GA
+        ],
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+          // Setting this parameter is also optional
+          respectDNT: true,
+          // Avoids sending pageview hits from custom paths
+          exclude: ["/preview/**", "/do-not-track/me/too/"],
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
