@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import RelatedPosts from "../components/related-posts";
+import Seo from "../components/seo";
 
 const Authors = ({
   pageContext,
@@ -24,6 +25,14 @@ const Authors = ({
     <Layout posts={posts} location={location} title={siteTitle}>
       <RelatedPosts title={authorTitle} posts={posts} />
     </Layout>
+  );
+};
+
+export const Head = ({pageContext}) => {
+  return (
+    <Seo
+      title={`Autor ${pageContext.author}`}
+    />
   );
 };
 

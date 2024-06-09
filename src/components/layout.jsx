@@ -37,6 +37,9 @@ const Layout = ({ posts, location, title, children }) => {
                       <StyledLink
                         to={posts?.[postIndex].fields.slug}
                         itemProp="url"
+                        onClick={() => window.gtag("event", `click_on_${posts?.[postIndex].frontmatter.title ||
+                          posts?.[postIndex].fields.slug}`, { clickedLink: posts?.[postIndex].frontmatter.title ||
+                          posts?.[postIndex].fields.slug })}
                       >
                         {posts?.[postIndex].frontmatter.title ||
                           posts?.[postIndex].fields.slug}
