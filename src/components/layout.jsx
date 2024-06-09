@@ -1,7 +1,6 @@
 import * as React from "react";
 import HeaderContent from "./header-content";
 import styled from "styled-components";
-// import AdSense from 'react-adsense';
 import { StyledLink } from "./styled-link";
 
 const recentPostsList = [...Array(3).keys()];
