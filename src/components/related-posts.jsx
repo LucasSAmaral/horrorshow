@@ -34,7 +34,6 @@ const RelatedPosts = ({ title, posts }) => {
 
 const Wrapper = styled.div`
   h1 {
-    text-align: center;
     margin-top: 0;
   }
 
