@@ -1,6 +1,7 @@
 import * as React from "react";
 import HeaderContent from "./header-content";
 import styled from "styled-components";
+// import AdSense from 'react-adsense';
 import { StyledLink } from "./styled-link";
 
 const recentPostsList = [...Array(3).keys()];
@@ -47,6 +48,13 @@ const Layout = ({ posts, location, title, children }) => {
                     </li>
                   ))}
                 </ol>
+                <ins className="adsbygoogle"
+                  style={{ display: "block" }}
+                  data-ad-client="ca-pub-1907274240349428"
+                  data-ad-slot="1509501448"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true">
+                </ins>
               </div>
             )}
           </Aside>
