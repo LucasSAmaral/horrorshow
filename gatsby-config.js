@@ -1,6 +1,6 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
- });
+});
 
 /**
  * Configure your Gatsby site with this file.
@@ -23,7 +23,7 @@ module.exports = {
                   nas horas vagas.`,
         ],
         social: {
-          twitter: `a definir`,
+          letterboxd: `http://letterboxd.com/lucas3001`,
         },
       },
       { name: `Boby`, summary: [`Teste2`] },

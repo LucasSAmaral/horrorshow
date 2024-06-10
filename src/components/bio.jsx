@@ -9,6 +9,7 @@ import * as React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import _ from "lodash";
+import styled from "styled-components";
 
 const getAuthor = (postAuthor, authorArray) => {
   return authorArray.find(author => author.name === postAuthor);
@@ -27,7 +28,7 @@ const Bio = ({ postAuthor }) => {
             name
             summary
             social {
-              twitter
+              letterboxd
             }
           }
         }
@@ -44,7 +45,7 @@ const Bio = ({ postAuthor }) => {
       const authorPath = getAuthorPath(postAuthor);
 
       return (
-        <div className="bio">
+        <BioWrapper className="bio">
           <StaticImage
             className="bio-avatar"
             layout="fixed"
@@ -58,7 +59,7 @@ const Bio = ({ postAuthor }) => {
           <div>
             {author?.name && (
               <>
-                <p>
+                <p className="written-by">
                   Escrito por{" "}
                   <Link className="author-link" to={authorPath}>
                     {author.name}
@@ -68,19 +69,31 @@ const Bio = ({ postAuthor }) => {
                   <p>{paragraph}</p>
                 ))}
 
-                <p>
-                  <a
-                    href={`https://twitter.com/${
-                      author?.social?.twitter || ``
-                    }`}
-                  >
-                    You should follow them on Twitter
-                  </a>
-                </p>
+                <Wrapper>
+                  Redes Sociais:
+                  <p>
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      href={`${author?.social?.letterboxd || ``}`}
+                    >
+                      <StaticImage
+                        layout="fixed"
+                        formats={["auto", "webp", "avif"]}
+                        src="../images/letterboxd-icon.svg"
+                        width={30}
+                        height={30}
+                        quality={95}
+                        alt="Profile picture"
+                      />
+                      Letterboxd
+                    </a>
+                  </p>
+                </Wrapper>
               </>
             )}
           </div>
-        </div>
+        </BioWrapper>
       );
     }
 
@@ -89,7 +102,7 @@ const Bio = ({ postAuthor }) => {
       const authorPath = getAuthorPath(postAuthor);
 
       return (
-        <div className="bio">
+        <BioWrapper className="bio">
           <StaticImage
             className="bio-avatar"
             layout="fixed"
@@ -103,7 +116,7 @@ const Bio = ({ postAuthor }) => {
           <div>
             {author?.name && (
               <>
-                <p>
+                <p className="written-by">
                   Escrito por{" "}
                   <Link className="author-link" to={authorPath}>
                     {author.name}
@@ -123,7 +136,7 @@ const Bio = ({ postAuthor }) => {
               </>
             )}
           </div>
-        </div>
+        </BioWrapper>
       );
     }
 
@@ -132,7 +145,7 @@ const Bio = ({ postAuthor }) => {
       const authorPath = getAuthorPath(postAuthor);
 
       return (
-        <div className="bio">
+        <BioWrapper className="bio">
           <StaticImage
             className="bio-avatar"
             layout="fixed"
@@ -146,7 +159,7 @@ const Bio = ({ postAuthor }) => {
           <div>
             {author?.name && (
               <>
-                <p>
+                <p className="written-by">
                   Escrito por{" "}
                   <Link className="author-link" to={authorPath}>
                     {author.name}
@@ -166,7 +179,7 @@ const Bio = ({ postAuthor }) => {
               </>
             )}
           </div>
-        </div>
+        </BioWrapper>
       );
     }
 
@@ -174,5 +187,23 @@ const Bio = ({ postAuthor }) => {
       return <></>;
   }
 };
+
+const BioWrapper = styled.div`
+  .written-by {
+    margin-bottom: 5px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+`;
+
+const Wrapper = styled.div`
+  margin-top: 15px;
+
+  a {
+    display: flex;
+    gap: 5px;
+  }
+`;
 
 export default Bio;
