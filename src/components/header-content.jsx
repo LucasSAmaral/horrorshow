@@ -30,7 +30,7 @@ const HeaderContent = ({ title }) => {
       <Menu>
         <StyledLink to="/">Início</StyledLink>
         <StyledLink to="/busca">Busca</StyledLink>
-        <StyledLink to="/sobre">Sobre</StyledLink>
+        <StyledLink to="/sobre-nos">Sobre nós</StyledLink>
       </Menu>
     </>
   );

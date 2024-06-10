@@ -6,7 +6,7 @@ import { StaticImage } from "gatsby-plugin-image";
 
 const recentPostsList = [...Array(3).keys()];
 
-const shouldRecentPosts = pathName => {
+const shouldShowRecentPosts = pathName => {
   return !(
     pathName.includes("/author/") ||
     pathName.includes("/busca/") ||
@@ -18,7 +18,7 @@ const Layout = ({ posts, location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
 
-  const showRecentPosts = shouldRecentPosts(location.pathname);
+  const showRecentPosts = shouldShowRecentPosts(location.pathname);
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>

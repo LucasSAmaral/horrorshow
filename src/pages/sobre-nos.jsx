@@ -1,0 +1,71 @@
+import * as React from "react";
+import { graphql } from "gatsby";
+
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import styled from "styled-components";
+
+const NotFoundPage = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata.title;
+  const posts = data.allMarkdownRemark.nodes;
+
+  return (
+    <Layout posts={posts} location={location} title={siteTitle}>
+      <Wrapper>
+        <h1>Sobre Nós</h1>
+        <p>
+          Aqui falamos e divagamos sobre o que vimos recentemente relacionado ao
+          gênero terror, mas não necessáriamente só terror.
+        </p>
+        <p>
+          Falamos sobre terror e suspense de forma descontraída. Seja sobre
+          filmes, séries, hqs e games. Até mesmo novelas. Por que não?
+        </p>
+      </Wrapper>
+    </Layout>
+  );
+};
+
+export const Head = () => <Seo title="Sobre Nós" />;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 1180px) {
+    text-align: center;
+  }
+
+  h1 {
+    font-family: var(--title-font);
+    color: var(--title-color);
+    font-size: 55px;
+    margin: 0 0 35px 0;
+
+    @media (max-width: 1180px) {
+      font-size: 45px;
+    }
+  }
+`;
+
+export default NotFoundPage;
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+        }
+      }
+    }
+  }
+`;

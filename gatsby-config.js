@@ -29,10 +29,11 @@ module.exports = {
       { name: `Boby`, summary: [`Teste2`] },
       { name: `Jack`, summary: [`Teste3`] },
     ],
-    description: `Críticas e resenhas sobre filmes de terror (ou não)`,
+    description: `Falamos sobre terror e suspense de forma descontraída. Seja sobre filmes, séries, hqs e games. Até mesmo novelas. Por que não?`,
     siteUrl: `http://www.horrorshow.com.br`,
     social: {
-      twitter: `horrorshow_br`,
+      instagram: "https://www.instagram.com/horrorshowbr/",
+      twitter: "https://x.com/horrorshow_br",
     },
   },
   plugins: [
