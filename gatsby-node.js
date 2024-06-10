@@ -165,7 +165,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       author: String
       description: String
+      usePoster: Boolean
       posterUrl: String
+      posterImage: File
+      posterImageAlt: String
       date: Date @dateformat
     }
 
