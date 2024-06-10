@@ -1,6 +1,6 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
- });
+});
 
 /**
  * Configure your Gatsby site with this file.
@@ -23,7 +23,7 @@ module.exports = {
                   nas horas vagas.`,
         ],
         social: {
-          twitter: `a definir`,
+          letterboxd: `http://letterboxd.com/lucas3001`,
         },
       },
       { name: `Boby`, summary: [`Teste2`] },
@@ -53,6 +53,12 @@ module.exports = {
           // Avoids sending pageview hits from custom paths
           exclude: ["/preview/**", "/do-not-track/me/too/"],
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: "ca-pub-1907274240349428",
       },
     },
     {

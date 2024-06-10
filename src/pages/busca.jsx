@@ -115,7 +115,6 @@ const Busca = ({ data, location }) => {
 
 const SearchWrapper = styled.div`
   display: flex;
-  justify-content: center;
   gap: 15px;
 `;
 

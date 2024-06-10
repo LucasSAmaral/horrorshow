@@ -101,8 +101,15 @@ const BlogIndex = ({ data, location }) => {
 
 const Ol = styled.ol`
   list-style: none;
+  margin-top: 0;
 
   li {
+    article {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
     .with-poster {
       display: flex;
       gap: 15px;

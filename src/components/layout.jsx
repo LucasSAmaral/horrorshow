@@ -2,10 +2,11 @@ import * as React from "react";
 import HeaderContent from "./header-content";
 import styled from "styled-components";
 import { StyledLink } from "./styled-link";
+import { StaticImage } from "gatsby-plugin-image";
 
 const recentPostsList = [...Array(3).keys()];
 
-const shouldShowAside = pathName => {
+const shouldRecentPosts = pathName => {
   return !(
     pathName.includes("/author/") ||
     pathName.includes("/busca/") ||
@@ -17,7 +18,7 @@ const Layout = ({ posts, location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
 
-  const showAside = shouldShowAside(location.pathname);
+  const showRecentPosts = shouldRecentPosts(location.pathname);
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
@@ -26,10 +27,55 @@ const Layout = ({ posts, location, title, children }) => {
       </header>
 
       <Wrapper>
-        {showAside && (
-          <Aside>
-            {posts.length >= 3 && (
-              <div>
+        <Aside>
+          <AsideContainer>
+            <SocialNetworks>
+              <h5>Nos siga nas redes sociais</h5>
+              <ol>
+                <li>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.instagram.com/horrorshowbr/"
+                    onClick={() =>
+                      window.gtag("event", "click_on_social_network_instagram")
+                    }
+                  >
+                    <StaticImage
+                      layout="fixed"
+                      formats={["auto", "webp", "avif"]}
+                      src="../images/instagram-icon.png"
+                      quality={95}
+                      alt="ícone do instagram"
+                      title="Nos siga no Instagram"
+                    />
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://x.com/horrorshow_br"
+                    onClick={() =>
+                      window.gtag("event", "click_on_social_network_twitter")
+                    }
+                  >
+                    <StaticImage
+                      layout="fixed"
+                      formats={["auto", "webp", "avif"]}
+                      src="../images/x-icon.png"
+                      quality={95}
+                      alt="ícone do X (Twitter)"
+                      title="Nos siga no X (Twitter)"
+                    />
+                    X (Twitter)
+                  </a>
+                </li>
+              </ol>
+            </SocialNetworks>
+            {posts.length >= 3 && showRecentPosts && (
+              <RecentPosts>
                 <h5>Posts mais recentes</h5>
                 <ol>
                   {recentPostsList.map(postIndex => (
@@ -37,9 +83,20 @@ const Layout = ({ posts, location, title, children }) => {
                       <StyledLink
                         to={posts?.[postIndex].fields.slug}
                         itemProp="url"
-                        onClick={() => window.gtag("event", `click_on_${posts?.[postIndex].frontmatter.title ||
-                          posts?.[postIndex].fields.slug}`, { clickedLink: posts?.[postIndex].frontmatter.title ||
-                          posts?.[postIndex].fields.slug })}
+                        onClick={() =>
+                          window.gtag(
+                            "event",
+                            `click_on_${
+                              posts?.[postIndex].frontmatter.title ||
+                              posts?.[postIndex].fields.slug
+                            }`,
+                            {
+                              clickedLink:
+                                posts?.[postIndex].frontmatter.title ||
+                                posts?.[postIndex].fields.slug,
+                            }
+                          )
+                        }
                       >
                         {posts?.[postIndex].frontmatter.title ||
                           posts?.[postIndex].fields.slug}
@@ -47,12 +104,20 @@ const Layout = ({ posts, location, title, children }) => {
                     </li>
                   ))}
                 </ol>
-              </div>
+              </RecentPosts>
             )}
-          </Aside>
-        )}
+            <ins
+              className="adsbygoogle"
+              style={{ display: "block" }}
+              data-ad-client="ca-pub-1907274240349428"
+              data-ad-slot="1509501448"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            />
+          </AsideContainer>
+        </Aside>
 
-        <MainWrapper className={!showAside ? "wrapper-flex" : ""}>
+        <MainWrapper>
           <main>{children}</main>
         </MainWrapper>
       </Wrapper>
@@ -88,14 +153,6 @@ const Aside = styled.aside`
     text-align: center;
   }
 
-  div {
-    position: fixed;
-
-    @media (max-width: 1180px) {
-      position: inherit;
-    }
-  }
-
   h5 {
     font-family: var(--title-font);
     color: var(--title-color);
@@ -115,14 +172,42 @@ const Aside = styled.aside`
   }
 `;
 
+const AsideContainer = styled.div`
+  position: fixed;
+
+  @media (max-width: 1180px) {
+    position: inherit;
+  }
+`;
+
+const SocialNetworks = styled.div`
+  margin-bottom: 15px;
+
+  a {
+    display: flex;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--title-font);
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: line-through;
+    }
+
+    @media (max-width: 1180px) {
+      justify-content: center;
+    }
+  }
+`;
+
+const RecentPosts = styled.div``;
+
 const MainWrapper = styled.div`
   width: 100%;
   max-width: 900px;
-
-  &.wrapper-flex {
-    display: flex;
-    justify-content: center;
-  }
 
   @media (max-width: 1180px) {
     display: flex;

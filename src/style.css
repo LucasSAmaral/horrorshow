@@ -315,10 +315,6 @@ a:focus {
   text-align: left;
 }
 
-.bio p {
-  margin-bottom: var(--spacing-0);
-}
-
 .bio-avatar {
   margin-right: var(--spacing-4);
   margin-bottom: var(--spacing-0);

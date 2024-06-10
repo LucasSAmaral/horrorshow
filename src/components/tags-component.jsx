@@ -28,6 +28,7 @@ const TagsComponent = ({ tags, className }) => {
 const TagsWrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
+  gap: 10px;
   align-items: center;
   margin-bottom: var(--spacing-2);
   font-size: 19px;
@@ -38,7 +39,6 @@ const TagsWrapper = styled.div`
 `;
 
 const Tag = styled.div`
-  margin-right: 2.5%;
   cursor: pointer;
   white-space: nowrap;
   padding: 0px 10px;
