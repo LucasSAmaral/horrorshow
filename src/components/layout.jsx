@@ -34,6 +34,8 @@ const Layout = ({ posts, location, title, children }) => {
               <ol>
                 <li>
                   <a
+                    target="_blank"
+                    rel="noreferrer"
                     href="https://www.instagram.com/horrorshowbr/"
                     onClick={() =>
                       window.gtag("event", "click_on_social_network_instagram")
@@ -52,6 +54,8 @@ const Layout = ({ posts, location, title, children }) => {
                 </li>
                 <li>
                   <a
+                    target="_blank"
+                    rel="noreferrer"
                     href="https://x.com/horrorshow_br"
                     onClick={() =>
                       window.gtag("event", "click_on_social_network_twitter")
