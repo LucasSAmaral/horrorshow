@@ -45,7 +45,7 @@ const BlogPostTemplate = ({
         <TagsComponentWrapper>
           <TagsComponent tags={post.frontmatter.tags} />
         </TagsComponentWrapper>
-        <section
+        <Section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
@@ -73,13 +73,15 @@ const BlogPostTemplate = ({
         </Ul>
       </nav>
       {/* Trocar a baseUrl ao colocar em produção */}
-      <Disqus
-        config={{
-          url: `http://localhost:8000${location.pathname}`,
-          identifier: post.id,
-          title: post.frontmatter.title,
-        }}
-      />
+      <DisqusWrapper>
+        <Disqus
+          config={{
+            url: `http://localhost:8000${location.pathname}`,
+            identifier: post.id,
+            title: post.frontmatter.title,
+          }}
+        />
+      </DisqusWrapper>
     </Layout>
   );
 };
@@ -97,12 +99,22 @@ const TagsComponentWrapper = styled.div`
   margin-bottom: 32px;
 `;
 
+const Section = styled.section`
+  text-align: justify;
+`;
+
 const Ul = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   list-style: none;
   padding: 0;
+`;
+
+const DisqusWrapper = styled.div`
+  @media (max-width: 425px) {
+    padding: 0 35px;
+  }
 `;
 
 export default BlogPostTemplate;
