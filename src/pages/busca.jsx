@@ -116,6 +116,14 @@ const Busca = ({ data, location }) => {
 const SearchWrapper = styled.div`
   display: flex;
   gap: 15px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  @media (max-width: 320px) {
+    padding: 0 25px;
+  }
 `;
 
 const SearchTitle = styled.h1`

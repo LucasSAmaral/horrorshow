@@ -43,7 +43,7 @@ const BlogPostTemplate = ({
           <p>Postado em: {post.frontmatter.date}</p>
         </header>
         <TagsComponentWrapper>
-          <TagsComponent tags={post.frontmatter.tags} />
+          <TagsComponent className="tag-post" tags={post.frontmatter.tags} />
         </TagsComponentWrapper>
         <Section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -72,11 +72,11 @@ const BlogPostTemplate = ({
           </li>
         </Ul>
       </nav>
-      {/* Trocar a baseUrl ao colocar em produção */}
+      {/* Verificar se a baseUrl vai funcionar em produção */}
       <DisqusWrapper>
         <Disqus
           config={{
-            url: `http://localhost:8000${location.pathname}`,
+            url: `http://horrorshow.com.br${location.pathname}`,
             identifier: post.id,
             title: post.frontmatter.title,
           }}

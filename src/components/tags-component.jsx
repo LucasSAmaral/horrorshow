@@ -35,10 +35,10 @@ const TagsWrapper = styled.div`
 
   @media (max-width: 768px) {
     justify-content: center;
-  }
 
-  @media (max-width: 425px) {
-    justify-content: flex-start;
+    &.tag-post {
+      justify-content: flex-start;
+    }
   }
 `;
 
