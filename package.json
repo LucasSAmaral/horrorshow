@@ -2,7 +2,7 @@
   "name": "horrorshow",
   "private": true,
   "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Lucas Amaral <lucassamaraldev@gmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
@@ -52,7 +52,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "release": "standar-version",
+    "release": "standard-version && git push --follow-tags origin main",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   }
 }
