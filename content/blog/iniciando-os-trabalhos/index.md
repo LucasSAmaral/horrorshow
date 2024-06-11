@@ -1,7 +1,7 @@
 ---
 title: Iniciando os trabalhos
 author: Lucas Amaral
-date: "2024-06-20T23:46:37.121Z"
+date: "2024-06-11T23:46:37.121Z"
 usePoster: false
 description: "Sejam bem-vindos ao nosso blog!"
 tags: ["Novidade"]
