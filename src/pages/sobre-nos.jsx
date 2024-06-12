@@ -31,16 +31,17 @@ export const Head = () => <Seo title="Sobre Nós" />;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: justify;
 
-  @media (max-width: 1180px) {
-    text-align: center;
+  @media (max-width: 540px) {
+    padding: 0 25px;
   }
 
   h1 {
     font-family: var(--title-font);
     color: var(--title-color);
     font-size: 55px;
-    margin: 0 0 35px 0;
+    margin: 0 0 1rem 0;
 
     @media (max-width: 1180px) {
       font-size: 45px;
