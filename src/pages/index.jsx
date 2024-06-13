@@ -29,6 +29,14 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout posts={posts} location={location} title={siteTitle}>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-1907274240349428"
+        data-ad-slot="7556976067"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
       <Ol>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug;
@@ -95,6 +103,14 @@ const BlogIndex = ({ data, location }) => {
           );
         })}
       </Ol>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-1907274240349428"
+        data-ad-slot="6852100106"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
     </Layout>
   );
 };

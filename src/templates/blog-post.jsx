@@ -27,6 +27,14 @@ const BlogPostTemplate = ({
 
   return (
     <Layout posts={posts} location={location} title={siteTitle}>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-1907274240349428"
+        data-ad-slot="1509501448"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
       <article
         className="blog-post"
         itemScope
@@ -72,7 +80,14 @@ const BlogPostTemplate = ({
           </li>
         </Ul>
       </nav>
-      {/* Verificar se a baseUrl vai funcionar em produção */}
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-1907274240349428"
+        data-ad-slot="8955218708"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
       <DisqusWrapper>
         <Disqus
           config={{

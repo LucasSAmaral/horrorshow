@@ -106,14 +106,6 @@ const Layout = ({ posts, location, title, children }) => {
                 </ol>
               </RecentPosts>
             )}
-            <ins
-              className="adsbygoogle"
-              style={{ display: "block" }}
-              data-ad-client="ca-pub-1907274240349428"
-              data-ad-slot="1509501448"
-              data-ad-format="auto"
-              data-full-width-responsive="true"
-            />
           </AsideContainer>
         </Aside>
 
