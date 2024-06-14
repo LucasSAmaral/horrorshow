@@ -274,11 +274,7 @@ a:focus {
   margin: 0;
   text-align: center;
   color: var(--title-color);
-  text-shadow: 1px -1px 0 #872f2f, 2px -2px 0 #832e2e, 3px -3px 0 #802d2d,
-    4px -4px 0 #7c2b2b, 5px -5px 0 #782a2a, 6px -6px 0 #742929,
-    7px -7px 0 #712727, 8px -8px 0 #6d2626, 9px -9px 0 #692525,
-    10px -10px 0 #652323, 11px -11px 0 #612222, 12px -12px 0 #5e2121,
-    13px -13px 12px rgba(0, 0, 0, 0.55), 13px -13px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 5px -4px 3px rgba(0, 0, 0, 0.5);
 }
 
 .post-list-item {

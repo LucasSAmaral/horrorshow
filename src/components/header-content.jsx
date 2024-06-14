@@ -17,15 +17,6 @@ const HeaderContent = ({ title }) => {
           alt="Profile picture"
         />
         <h1 className="main-heading">{title}</h1>
-        <StaticImage
-          className="right-hand"
-          layout="fixed"
-          formats={["auto", "webp", "avif"]}
-          src="../images/blood-hand.png"
-          height={88}
-          quality={95}
-          alt="Profile picture"
-        />
       </TitleWrapper>
       <Menu>
         <StyledLink to="/">Início</StyledLink>
@@ -42,12 +33,23 @@ const TitleWrapper = styled.div`
   align-items: center;
   gap: 20px;
 
-  .right-hand {
-    transform: scaleX(-1);
+  h1 {
+    margin-right: 89px;
+  }
+
+  .left-hand {
+    overflow: visible;
+  }
+
+  img {
+    filter: drop-shadow(6px -3px 2px rgba(0, 0, 0, 0.5));
   }
 
   @media (max-width: 375px) {
-    img {
+    h1 {
+      margin-right: 0;
+    }
+    .left-hand {
       display: none;
     }
   }
