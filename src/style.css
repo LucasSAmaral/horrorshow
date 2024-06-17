@@ -372,7 +372,7 @@ h6 {
 
 /* Media queries */
 
-@media (max-width: 425px) {
+@media (max-width: 430px) {
   .blog-post {
     padding: 0 35px;
   }

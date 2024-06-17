@@ -127,7 +127,7 @@ const Ul = styled.ul`
 `;
 
 const DisqusWrapper = styled.div`
-  @media (max-width: 425px) {
+  @media (max-width: 430px) {
     padding: 0 35px;
   }
 `;
