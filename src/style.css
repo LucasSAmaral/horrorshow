@@ -204,6 +204,12 @@ li > ul {
   margin-top: calc(var(--spacing-8) / 2);
 }
 
+figcaption {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
 blockquote {
   color: var(--font-body);
   margin-left: calc(-1 * var(--spacing-6));
