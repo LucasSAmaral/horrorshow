@@ -210,6 +210,14 @@ figcaption {
   margin-top: 10px;
 }
 
+figure {
+  margin: 16px 0;
+}
+
+figure .gatsby-resp-image-wrapper {
+  max-width: none !important;
+}
+
 blockquote {
   color: var(--font-body);
   margin-left: calc(-1 * var(--spacing-6));
