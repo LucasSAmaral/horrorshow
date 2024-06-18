@@ -6,6 +6,7 @@ description: Divertido filme de 2024 estrelado por Melissa Barrera poderia ter s
 usePoster: true
 posterImage: ./abigail-poster.jpg
 posterImageAlt: "Poster do filme Abigail"
+rating: "4.0"
 tags: ["Vampiro", "Ação", "Comédia"]
 ---
 
