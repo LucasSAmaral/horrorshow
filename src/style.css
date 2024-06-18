@@ -204,6 +204,20 @@ li > ul {
   margin-top: calc(var(--spacing-8) / 2);
 }
 
+figcaption {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+figure {
+  margin: 16px 0;
+}
+
+figure .gatsby-resp-image-wrapper {
+  max-width: none !important;
+}
+
 blockquote {
   color: var(--font-body);
   margin-left: calc(-1 * var(--spacing-6));
@@ -338,6 +352,14 @@ h6 {
   margin-bottom: 10px;
 }
 
+.poster-wrapper {
+  margin-bottom: 32px;
+}
+
+.poster-wrapper .gatsby-resp-image-wrapper {
+  max-width: 250px !important;
+}
+
 .author-link {
   color: inherit;
   font-weight: bold;
@@ -352,9 +374,19 @@ h6 {
   margin-bottom: var(--spacing-8);
 }
 
+.gatsby-highlight .language-text {
+  text-align: center;
+  background-color: var(--title-color);
+  color: var(--font-body);
+  font-family: var(--title-font);
+  font-size: 30px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 /* Media queries */
 
-@media (max-width: 425px) {
+@media (max-width: 430px) {
   .blog-post {
     padding: 0 35px;
   }

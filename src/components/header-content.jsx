@@ -9,7 +9,7 @@ const HeaderContent = ({ title }) => {
       <TitleWrapper>
         <StaticImage
           className="left-hand"
-          layout="fixed"
+          layout="constrained"
           formats={["auto", "webp", "avif"]}
           src="../images/blood-hand.png"
           height={88}
@@ -35,6 +35,15 @@ const TitleWrapper = styled.div`
 
   h1 {
     margin-right: 89px;
+
+    @media (max-width: 430px) {
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: 320px) {
+    padding: 0px 5px;
+    gap: 10px;
   }
 
   .left-hand {
@@ -43,15 +52,6 @@ const TitleWrapper = styled.div`
 
   img {
     filter: drop-shadow(6px -3px 2px rgba(0, 0, 0, 0.5));
-  }
-
-  @media (max-width: 375px) {
-    h1 {
-      margin-right: 0;
-    }
-    .left-hand {
-      display: none;
-    }
   }
 `;
 
