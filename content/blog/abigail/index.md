@@ -1,7 +1,7 @@
 ---
 title: Abigail
 author: Lucas Amaral
-date: "2024-06-17T15:05:32.169Z"
+date: "2024-06-18T10:00:32.169Z"
 description: Divertido filme de 2024 estrelado por Melissa Barrera poderia ter sido melhor aproveitado se o marketing não fosse tão focado em suposta reviravolta.
 usePoster: true
 posterImage: ./abigail-poster.jpg
