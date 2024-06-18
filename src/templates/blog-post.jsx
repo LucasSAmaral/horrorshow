@@ -9,6 +9,7 @@ import { StyledLink } from "../components/styled-link";
 import { Disqus } from "gatsby-plugin-disqus";
 import TagsComponent from "../components/tags-component";
 import _ from "lodash";
+import MovieRating from "../components/movie-rating";
 
 const BlogPostTemplate = ({
   data: {
@@ -57,6 +58,10 @@ const BlogPostTemplate = ({
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
+        {post.frontmatter.rating && (
+          <MovieRating rating={post.frontmatter.rating} />
+        )}
+
         <hr />
         <footer>
           <Bio postAuthor={post.frontmatter.author} />
@@ -164,6 +169,7 @@ export const pageQuery = graphql`
         author
         date(formatString: "DD/MM/YYYY")
         description
+        rating
         tags
       }
     }
