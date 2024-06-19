@@ -46,6 +46,7 @@ const Layout = ({ posts, location, title, children }) => {
                       formats={["auto", "webp", "avif"]}
                       src="../images/instagram-icon.png"
                       quality={95}
+                      width={30}
                       alt="ícone do instagram"
                       title="Nos siga no Instagram"
                     />
@@ -66,10 +67,32 @@ const Layout = ({ posts, location, title, children }) => {
                       formats={["auto", "webp", "avif"]}
                       src="../images/x-icon.png"
                       quality={95}
+                      width={30}
                       alt="ícone do X (Twitter)"
                       title="Nos siga no X (Twitter)"
                     />
                     X (Twitter)
+                  </a>
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.tiktok.com/@horrorshowbr"
+                    onClick={() =>
+                      window.gtag("event", "click_on_social_network_tiktok")
+                    }
+                  >
+                    <StaticImage
+                      layout="fixed"
+                      formats={["auto", "webp", "avif"]}
+                      src="../images/tiktok.png"
+                      quality={95}
+                      width={30}
+                      alt="ícone do TikTok"
+                      title="Nos siga no TikTok"
+                    />
+                    TikTok
                   </a>
                 </li>
               </ol>
