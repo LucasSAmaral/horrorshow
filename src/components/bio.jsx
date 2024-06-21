@@ -75,7 +75,7 @@ const Bio = ({ postAuthor }) => {
                     <a
                       target="_blank"
                       rel="noreferrer"
-                      href={`${author?.social?.letterboxd || ``}`}
+                      href={author?.social?.letterboxd || ``}
                     >
                       <StaticImage
                         layout="fixed"
@@ -97,7 +97,7 @@ const Bio = ({ postAuthor }) => {
       );
     }
 
-    case "Boby": {
+    case "Gilma G.": {
       const author = getAuthor(postAuthor, authorArray);
       const authorPath = getAuthorPath(postAuthor);
 
@@ -107,11 +107,11 @@ const Bio = ({ postAuthor }) => {
             className="bio-avatar"
             layout="fixed"
             formats={["auto", "webp", "avif"]}
-            src="../images/profile-pic.png"
+            src="../images/gilma-profile-pic.jpeg"
             width={50}
             height={50}
             quality={95}
-            alt="Profile picture"
+            alt="Foto de perfil em preto e branco da Gilma"
           />
           <div>
             {author?.name && (
@@ -122,17 +122,9 @@ const Bio = ({ postAuthor }) => {
                     {author.name}
                   </Link>
                 </p>
-                {/* <p>{author?.summary || null}</p> */}
-
-                <p>
-                  <a
-                    href={`https://twitter.com/${
-                      author?.social?.twitter || ``
-                    }`}
-                  >
-                    You should follow them on Twitter
-                  </a>
-                </p>
+                {author?.summary.map(paragraph => (
+                  <p>{paragraph}</p>
+                ))}
               </>
             )}
           </div>
