@@ -50,6 +50,10 @@ const Wrapper = styled.div`
   p {
     margin: 0;
   }
+
+  @media (max-width: 680px) {
+    padding: 0 25px;
+  }
 `;
 
 export default RelatedPosts;

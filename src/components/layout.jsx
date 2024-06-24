@@ -14,7 +14,7 @@ const shouldShowRecentPosts = pathName => {
   );
 };
 
-const Layout = ({ posts, location, title, children }) => {
+const Layout = ({ posts, location, title, social, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
 
@@ -36,7 +36,7 @@ const Layout = ({ posts, location, title, children }) => {
                   <a
                     target="_blank"
                     rel="noreferrer"
-                    href="https://www.instagram.com/horrorshowbr/"
+                    href={social?.instagram || ""}
                     onClick={() =>
                       window.gtag("event", "click_on_social_network_instagram")
                     }
@@ -57,7 +57,7 @@ const Layout = ({ posts, location, title, children }) => {
                   <a
                     target="_blank"
                     rel="noreferrer"
-                    href="https://x.com/horrorshow_br"
+                    href={social?.twitter || ""}
                     onClick={() =>
                       window.gtag("event", "click_on_social_network_twitter")
                     }
@@ -78,7 +78,7 @@ const Layout = ({ posts, location, title, children }) => {
                   <a
                     target="_blank"
                     rel="noreferrer"
-                    href="https://www.tiktok.com/@horrorshowbr"
+                    href={social?.tiktok || ""}
                     onClick={() =>
                       window.gtag("event", "click_on_social_network_tiktok")
                     }

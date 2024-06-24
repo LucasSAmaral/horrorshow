@@ -22,12 +22,13 @@ const BlogPostTemplate = ({
   location,
 }) => {
   const siteTitle = site.siteMetadata?.title || `Horrorshow`;
+  const social = site.siteMetadata?.social;
   const author = post.frontmatter.author;
 
   const kebabCaseAuthor = _.kebabCase(author);
 
   return (
-    <Layout posts={posts} location={location} title={siteTitle}>
+    <Layout posts={posts} location={location} title={siteTitle} social={social}>
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}
@@ -148,6 +149,11 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        social {
+          instagram
+          twitter
+          tiktok
+        }
       }
     }
     allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {

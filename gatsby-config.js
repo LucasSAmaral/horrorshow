@@ -26,14 +26,20 @@ module.exports = {
           letterboxd: `http://letterboxd.com/lucas3001`,
         },
       },
-      { name: `Boby`, summary: [`Teste2`] },
+      {
+        name: `Gilma G.`,
+        summary: [
+          `Apreciadora de arte e cultura, curiosa, corajosa e nas horas vagas, ouvinte.`,
+        ],
+      },
       { name: `Jack`, summary: [`Teste3`] },
     ],
     description: `Falamos sobre terror e suspense de forma descontraída. Seja sobre filmes, séries, hqs e games. Até mesmo novelas. Por que não?`,
     siteUrl: `http://www.horrorshow.com.br`,
     social: {
-      instagram: "https://www.instagram.com/horrorshowbr/",
+      instagram: "https://www.instagram.com/horrorshowbr",
       twitter: "https://x.com/horrorshow_br",
+      tiktok: "https://www.tiktok.com/@horrorshowbr",
     },
   },
   plugins: [
