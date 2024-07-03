@@ -95,6 +95,27 @@ const Layout = ({ posts, location, title, social, children }) => {
                     TikTok
                   </a>
                 </li>
+                <li>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href={social?.youtube || ""}
+                    onClick={() =>
+                      window.gtag("event", "click_on_social_network_tiktok")
+                    }
+                  >
+                    <StaticImage
+                      layout="fixed"
+                      formats={["auto", "webp", "avif"]}
+                      src="../images/youtube-Icon.png"
+                      quality={95}
+                      width={30}
+                      alt="ícone do YouTube"
+                      title="Se inscreva no nosso canal do YouTube"
+                    />
+                    YouTube
+                  </a>
+                </li>
               </ol>
             </SocialNetworks>
             {posts.length >= 3 && showRecentPosts && (

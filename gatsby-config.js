@@ -48,6 +48,7 @@ module.exports = {
       instagram: "https://www.instagram.com/horrorshowbr",
       twitter: "https://x.com/horrorshow_br",
       tiktok: "https://www.tiktok.com/@horrorshowbr",
+      youtube: "https://www.youtube.com/@horrorshowbr",
     },
   },
   plugins: [
