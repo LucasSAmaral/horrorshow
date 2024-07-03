@@ -132,7 +132,7 @@ const Bio = ({ postAuthor }) => {
       );
     }
 
-    case "Jack": {
+    case "Deborah Gonçalves": {
       const author = getAuthor(postAuthor, authorArray);
       const authorPath = getAuthorPath(postAuthor);
 
@@ -142,11 +142,11 @@ const Bio = ({ postAuthor }) => {
             className="bio-avatar"
             layout="fixed"
             formats={["auto", "webp", "avif"]}
-            src="../images/profile-pic.png"
+            src="../images/deborah-profile-pic.jpg"
             width={50}
             height={50}
             quality={95}
-            alt="Profile picture"
+            alt="Imagem de perfil da Deborah. Ela está com uma camisa vermelha, cordão e óculos. Atrás dela tem umas plantas à esquerda e uma casa com uma sacada à direita."
           />
           <div>
             {author?.name && (
@@ -157,17 +157,31 @@ const Bio = ({ postAuthor }) => {
                     {author.name}
                   </Link>
                 </p>
-                {/* <p>{author?.summary || null}</p> */}
+                {author?.summary.map(paragraph => (
+                  <p>{paragraph}</p>
+                ))}
 
-                <p>
-                  <a
-                    href={`https://twitter.com/${
-                      author?.social?.twitter || ``
-                    }`}
-                  >
-                    You should follow them on Twitter
-                  </a>
-                </p>
+                <Wrapper>
+                  Redes Sociais:
+                  <p>
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      href={author?.social?.letterboxd || ``}
+                    >
+                      <StaticImage
+                        layout="fixed"
+                        formats={["auto", "webp", "avif"]}
+                        src="../images/letterboxd-icon.svg"
+                        width={30}
+                        height={30}
+                        quality={95}
+                        alt="Profile picture"
+                      />
+                      Letterboxd
+                    </a>
+                  </p>
+                </Wrapper>
               </>
             )}
           </div>

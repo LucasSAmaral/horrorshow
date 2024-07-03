@@ -32,7 +32,15 @@ module.exports = {
           `Apreciadora de arte e cultura, curiosa, corajosa e nas horas vagas, ouvinte.`,
         ],
       },
-      { name: `Jack`, summary: [`Teste3`] },
+      {
+        name: `Deborah Gonçalves`,
+        summary: [
+          `Bibliotecária apaixonada por Cinema, intermediando sempre que possível, o melhor dos dois mundos.`,
+        ],
+        social: {
+          letterboxd: `http://letterboxd.com/dgoncalves_s`,
+        },
+      },
     ],
     description: `Falamos sobre terror e suspense de forma descontraída. Seja sobre filmes, séries, hqs e games. Até mesmo novelas. Por que não?`,
     siteUrl: `http://www.horrorshow.com.br`,
