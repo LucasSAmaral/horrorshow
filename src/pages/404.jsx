@@ -8,10 +8,11 @@ import styled from "styled-components";
 
 const NotFoundPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
+  const social = data.site.siteMetadata?.social;
   const posts = data.allMarkdownRemark.nodes;
 
   return (
-    <Layout posts={posts} location={location} title={siteTitle}>
+    <Layout posts={posts} location={location} title={siteTitle} social={social}>
       <Wrapper>
         <h1>404: Nada pra ver aqui</h1>
         <StaticImage
@@ -61,6 +62,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        social {
+          instagram
+          twitter
+          tiktok
+          youtube
+        }
       }
     }
     allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {

@@ -153,6 +153,7 @@ export const pageQuery = graphql`
           instagram
           twitter
           tiktok
+          youtube
         }
       }
     }

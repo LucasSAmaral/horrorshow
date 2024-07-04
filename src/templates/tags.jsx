@@ -16,24 +16,21 @@ const Tags = ({
   const { tag } = pageContext;
 
   const siteTitle = site.siteMetadata?.title || `Horrorshow`;
+  const social = site.siteMetadata?.social;
 
   const tagTitle = `${totalCount} ${
     totalCount === 1 ? "postagem" : "postagens"
   } marcada${totalCount === 1 ? "" : "s"} com "${tag}"`;
 
   return (
-    <Layout posts={posts} location={location} title={siteTitle}>
+    <Layout posts={posts} location={location} title={siteTitle} social={social}>
       <RelatedPosts title={tagTitle} posts={posts} />
     </Layout>
   );
 };
 
-export const Head = ({pageContext}) => {
-  return (
-    <Seo
-      title={`Tag ${pageContext.tag}`}
-    />
-  );
+export const Head = ({ pageContext }) => {
+  return <Seo title={`Tag ${pageContext.tag}`} />;
 };
 
 Tags.propTypes = {
@@ -58,6 +55,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        social {
+          instagram
+          twitter
+          tiktok
+          youtube
+        }
       }
     }
     allMarkdownRemark(

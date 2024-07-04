@@ -10,6 +10,7 @@ import TagsComponent from "../components/tags-component";
 
 const Busca = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Horrorshow`;
+  const social = data.site.siteMetadata?.social;
   const allPosts = data.allMarkdownRemark.nodes;
 
   const emptyQuery = "";
@@ -42,7 +43,7 @@ const Busca = ({ data, location }) => {
   const posts = hasSearchResults ? filteredData : allPosts;
 
   return (
-    <Layout posts={posts} location={location} title={siteTitle}>
+    <Layout posts={posts} location={location} title={siteTitle} social={social}>
       <SearchWrapper>
         <SearchTitle>Busca</SearchTitle>
 
@@ -194,6 +195,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        social {
+          instagram
+          twitter
+          tiktok
+          youtube
+        }
       }
     }
     allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {

@@ -16,24 +16,21 @@ const Authors = ({
   const { author } = pageContext;
 
   const siteTitle = site.siteMetadata?.title || `Horrorshow`;
+  const social = site.siteMetadata?.social;
 
   const authorTitle = `${totalCount} ${
     totalCount === 1 ? "postagem" : "postagens"
   } escrita${totalCount === 1 ? "" : "s"} por "${author}"`;
 
   return (
-    <Layout posts={posts} location={location} title={siteTitle}>
+    <Layout posts={posts} location={location} title={siteTitle} social={social}>
       <RelatedPosts title={authorTitle} posts={posts} />
     </Layout>
   );
 };
 
-export const Head = ({pageContext}) => {
-  return (
-    <Seo
-      title={`Autor ${pageContext.author}`}
-    />
-  );
+export const Head = ({ pageContext }) => {
+  return <Seo title={`Autor ${pageContext.author}`} />;
 };
 
 Authors.propTypes = {
@@ -58,6 +55,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        social {
+          instagram
+          twitter
+          tiktok
+          youtube
+        }
       }
     }
     allMarkdownRemark(
