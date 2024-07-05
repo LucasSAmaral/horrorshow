@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Script as GatsbyScript } from "gatsby";
 const Script = () => {
   return (
