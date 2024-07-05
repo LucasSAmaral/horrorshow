@@ -3,6 +3,7 @@ import HeaderContent from "./header-content";
 import styled from "styled-components";
 import { StyledLink } from "./styled-link";
 import { StaticImage } from "gatsby-plugin-image";
+import Script from "./script";
 
 const recentPostsList = [...Array(3).keys()];
 
@@ -21,142 +22,148 @@ const Layout = ({ posts, location, title, social, children }) => {
   const showRecentPosts = shouldShowRecentPosts(location.pathname);
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">
-        <HeaderContent title={title} />
-      </header>
+    <>
+      <Script />
+      <div className="global-wrapper" data-is-root-path={isRootPath}>
+        <header className="global-header">
+          <HeaderContent title={title} />
+        </header>
 
-      <Wrapper>
-        <Aside>
-          <AsideContainer>
-            <SocialNetworks>
-              <h5>Nos siga nas redes sociais</h5>
-              <ol>
-                <li>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href={social?.youtube || ""}
-                    onClick={() => window.gtag("event", "click_on_youtube")}
-                  >
-                    <StaticImage
-                      layout="fixed"
-                      formats={["auto", "webp", "avif"]}
-                      src="../images/youtube-Icon.png"
-                      quality={95}
-                      width={30}
-                      alt="ícone do YouTube"
-                      title="Se inscreva no nosso canal do YouTube"
-                    />
-                    YouTube
-                  </a>
-                </li>
-                <li>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href={social?.instagram || ""}
-                    onClick={() =>
-                      window.gtag("event", "click_on_social_network_instagram")
-                    }
-                  >
-                    <StaticImage
-                      layout="fixed"
-                      formats={["auto", "webp", "avif"]}
-                      src="../images/instagram-icon.png"
-                      quality={95}
-                      width={30}
-                      alt="ícone do instagram"
-                      title="Nos siga no Instagram"
-                    />
-                    Instagram
-                  </a>
-                </li>
-                <li>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href={social?.twitter || ""}
-                    onClick={() =>
-                      window.gtag("event", "click_on_social_network_twitter")
-                    }
-                  >
-                    <StaticImage
-                      layout="fixed"
-                      formats={["auto", "webp", "avif"]}
-                      src="../images/x-icon.png"
-                      quality={95}
-                      width={30}
-                      alt="ícone do X (Twitter)"
-                      title="Nos siga no X (Twitter)"
-                    />
-                    X (Twitter)
-                  </a>
-                </li>
-                <li>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href={social?.tiktok || ""}
-                    onClick={() =>
-                      window.gtag("event", "click_on_social_network_tiktok")
-                    }
-                  >
-                    <StaticImage
-                      layout="fixed"
-                      formats={["auto", "webp", "avif"]}
-                      src="../images/tiktok.png"
-                      quality={95}
-                      width={30}
-                      alt="ícone do TikTok"
-                      title="Nos siga no TikTok"
-                    />
-                    TikTok
-                  </a>
-                </li>
-              </ol>
-            </SocialNetworks>
-            {posts.length >= 3 && showRecentPosts && (
-              <RecentPosts>
-                <h5>Posts mais recentes</h5>
+        <Wrapper>
+          <Aside>
+            <AsideContainer>
+              <SocialNetworks>
+                <h5>Nos siga nas redes sociais</h5>
                 <ol>
-                  {recentPostsList.map(postIndex => (
-                    <li>
-                      <StyledLink
-                        to={posts?.[postIndex].fields.slug}
-                        itemProp="url"
-                        onClick={() =>
-                          window.gtag(
-                            "event",
-                            `click_on_${
-                              posts?.[postIndex].frontmatter.title ||
-                              posts?.[postIndex].fields.slug
-                            }`,
-                            {
-                              clickedLink:
-                                posts?.[postIndex].frontmatter.title ||
-                                posts?.[postIndex].fields.slug,
-                            }
-                          )
-                        }
-                      >
-                        {posts?.[postIndex].frontmatter.title ||
-                          posts?.[postIndex].fields.slug}
-                      </StyledLink>
-                    </li>
-                  ))}
+                  <li>
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      href={social?.youtube || ""}
+                      onClick={() => window.gtag("event", "click_on_youtube")}
+                    >
+                      <StaticImage
+                        layout="fixed"
+                        formats={["auto", "webp", "avif"]}
+                        src="../images/youtube-Icon.png"
+                        quality={95}
+                        width={30}
+                        alt="ícone do YouTube"
+                        title="Se inscreva no nosso canal do YouTube"
+                      />
+                      YouTube
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      href={social?.instagram || ""}
+                      onClick={() =>
+                        window.gtag(
+                          "event",
+                          "click_on_social_network_instagram"
+                        )
+                      }
+                    >
+                      <StaticImage
+                        layout="fixed"
+                        formats={["auto", "webp", "avif"]}
+                        src="../images/instagram-icon.png"
+                        quality={95}
+                        width={30}
+                        alt="ícone do instagram"
+                        title="Nos siga no Instagram"
+                      />
+                      Instagram
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      href={social?.twitter || ""}
+                      onClick={() =>
+                        window.gtag("event", "click_on_social_network_twitter")
+                      }
+                    >
+                      <StaticImage
+                        layout="fixed"
+                        formats={["auto", "webp", "avif"]}
+                        src="../images/x-icon.png"
+                        quality={95}
+                        width={30}
+                        alt="ícone do X (Twitter)"
+                        title="Nos siga no X (Twitter)"
+                      />
+                      X (Twitter)
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      href={social?.tiktok || ""}
+                      onClick={() =>
+                        window.gtag("event", "click_on_social_network_tiktok")
+                      }
+                    >
+                      <StaticImage
+                        layout="fixed"
+                        formats={["auto", "webp", "avif"]}
+                        src="../images/tiktok.png"
+                        quality={95}
+                        width={30}
+                        alt="ícone do TikTok"
+                        title="Nos siga no TikTok"
+                      />
+                      TikTok
+                    </a>
+                  </li>
                 </ol>
-              </RecentPosts>
-            )}
-          </AsideContainer>
-        </Aside>
+              </SocialNetworks>
+              {posts.length >= 3 && showRecentPosts && (
+                <RecentPosts>
+                  <h5>Posts mais recentes</h5>
+                  <ol>
+                    {recentPostsList.map(postIndex => (
+                      <li>
+                        <StyledLink
+                          to={posts?.[postIndex].fields.slug}
+                          itemProp="url"
+                          onClick={() =>
+                            window.gtag(
+                              "event",
+                              `click_on_${
+                                posts?.[postIndex].frontmatter.title ||
+                                posts?.[postIndex].fields.slug
+                              }`,
+                              {
+                                clickedLink:
+                                  posts?.[postIndex].frontmatter.title ||
+                                  posts?.[postIndex].fields.slug,
+                              }
+                            )
+                          }
+                        >
+                          {posts?.[postIndex].frontmatter.title ||
+                            posts?.[postIndex].fields.slug}
+                        </StyledLink>
+                      </li>
+                    ))}
+                  </ol>
+                </RecentPosts>
+              )}
+            </AsideContainer>
+          </Aside>
 
-        <MainWrapper>
-          <main>{children}</main>
-        </MainWrapper>
-      </Wrapper>
-      <footer>© Horrorshow {new Date().getFullYear()}</footer>
-    </div>
+          <MainWrapper>
+            <main>{children}</main>
+          </MainWrapper>
+        </Wrapper>
+        <footer>© Horrorshow {new Date().getFullYear()}</footer>
+      </div>
+    </>
   );
 };
 
