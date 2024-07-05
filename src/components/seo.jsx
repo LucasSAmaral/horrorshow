@@ -6,7 +6,7 @@
  */
 
 import * as React from "react";
-import { useStaticQuery, graphql, Script } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 
 const Seo = ({ description, title, children }) => {
   const { site } = useStaticQuery(
@@ -67,7 +67,7 @@ const Seo = ({ description, title, children }) => {
       />
       <meta name="youtube:title" content={title} />
       <meta name="youtube:description" content={metaDescription} />
-      <Script src="./monetag.js" />
+      <script src="./monetag.js" />
       {children}
     </>
   );
