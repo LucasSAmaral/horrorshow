@@ -8,6 +8,7 @@ import Poster from "../components/poster";
 import { StyledLink } from "../components/styled-link";
 import TagsComponent from "../components/tags-component";
 import _ from "lodash";
+import Script from "../components/script";
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Horrorshow`;
@@ -158,7 +159,12 @@ export default BlogIndex;
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="Todos os posts" />;
+export const Head = () => (
+  <>
+    <Script />
+    <Seo title="Todos os posts" />
+  </>
+);
 
 export const pageQuery = graphql`
   {

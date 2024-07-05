@@ -4,6 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import RelatedPosts from "../components/related-posts";
 import Seo from "../components/seo";
+import Script from "../components/script";
 
 const Authors = ({
   pageContext,
@@ -30,7 +31,12 @@ const Authors = ({
 };
 
 export const Head = ({ pageContext }) => {
-  return <Seo title={`Autor ${pageContext.author}`} />;
+  return (
+    <>
+      <Script />
+      <Seo title={`Autor ${pageContext.author}`} />
+    </>
+  );
 };
 
 Authors.propTypes = {

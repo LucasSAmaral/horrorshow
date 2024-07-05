@@ -5,6 +5,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
+import Script from "../components/script";
 
 const NotFoundPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
@@ -28,7 +29,12 @@ const NotFoundPage = ({ data, location }) => {
   );
 };
 
-export const Head = () => <Seo title="404" />;
+export const Head = () => (
+  <>
+    <Script />
+    <Seo title="404" />
+  </>
+);
 
 const Wrapper = styled.div`
   display: flex;

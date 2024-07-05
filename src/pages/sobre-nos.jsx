@@ -4,6 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import styled from "styled-components";
+import Script from "../components/script";
 
 const NotFoundPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
@@ -27,7 +28,12 @@ const NotFoundPage = ({ data, location }) => {
   );
 };
 
-export const Head = () => <Seo title="Sobre Nós" />;
+export const Head = () => (
+  <>
+    <Script />
+    <Seo title="Sobre Nós" />
+  </>
+);
 
 const Wrapper = styled.div`
   display: flex;
