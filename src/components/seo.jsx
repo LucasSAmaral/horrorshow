@@ -67,6 +67,7 @@ const Seo = ({ description, title, children }) => {
       />
       <meta name="youtube:title" content={title} />
       <meta name="youtube:description" content={metaDescription} />
+      <Script src="./monetag.js" />
       {children}
     </>
   );
