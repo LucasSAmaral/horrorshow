@@ -4,7 +4,6 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import RelatedPosts from "../components/related-posts";
 import Seo from "../components/seo";
-import Script from "../components/script";
 
 const Tags = ({
   pageContext,
@@ -31,12 +30,7 @@ const Tags = ({
 };
 
 export const Head = ({ pageContext }) => {
-  return (
-    <>
-      <Script />
-      <Seo title={`Tag ${pageContext.tag}`} />;
-    </>
-  );
+  return <Seo title={`Tag ${pageContext.tag}`} />;
 };
 
 Tags.propTypes = {

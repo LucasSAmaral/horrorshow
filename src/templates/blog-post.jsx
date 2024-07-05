@@ -10,7 +10,6 @@ import { Disqus } from "gatsby-plugin-disqus";
 import TagsComponent from "../components/tags-component";
 import _ from "lodash";
 import MovieRating from "../components/movie-rating";
-import Script from "../components/script";
 
 const BlogPostTemplate = ({
   data: {
@@ -110,13 +109,10 @@ const BlogPostTemplate = ({
 
 export const Head = ({ data: { markdownRemark: post } }) => {
   return (
-    <>
-      <Script />
-      <Seo
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
-    </>
+    <Seo
+      title={post.frontmatter.title}
+      description={post.frontmatter.description || post.excerpt}
+    />
   );
 };
 

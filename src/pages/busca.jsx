@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { StyledLink } from "../components/styled-link";
 import _ from "lodash";
 import TagsComponent from "../components/tags-component";
-import Script from "../components/script";
 
 const Busca = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Horrorshow`;
@@ -189,12 +188,7 @@ export default Busca;
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => (
-  <>
-    <Script />
-    <Seo title="Busca" />
-  </>
-);
+export const Head = () => <Seo title="Busca" />;
 
 export const pageQuery = graphql`
   {
