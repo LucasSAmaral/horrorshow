@@ -1,12 +1,17 @@
-import * as React from "react"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import * as React from "react";
 
 const Poster = ({ posterUrl, posterImage, posterImageAlt }) => {
-  if (posterUrl) {
-    return <img src={posterUrl} loading="lazy" alt={posterImageAlt} />
-  }
+	if (posterUrl) {
+		return <img src={posterUrl} loading="lazy" alt={posterImageAlt} />;
+	}
 
-  return <GatsbyImage image={getImage(posterImage)} alt={posterImageAlt} />
-}
+	return (
+		<GatsbyImage
+			image={getImage(posterImage.gatsbyImageData)}
+			alt={posterImageAlt}
+		/>
+	);
+};
 
-export default Poster
+export default Poster;
