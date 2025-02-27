@@ -1,35 +1,35 @@
+import { Link, graphql } from "gatsby";
 import * as React from "react";
-import { graphql, Link } from "gatsby";
 
+import { Disqus } from "gatsby-plugin-disqus";
+import _ from "lodash";
+import styled from "styled-components";
 import Bio from "../components/bio";
 import Layout from "../components/layout";
-import Seo from "../components/seo";
-import styled from "styled-components";
-import { StyledLink } from "../components/styled-link";
-import { Disqus } from "gatsby-plugin-disqus";
-import TagsComponent from "../components/tags-component";
-import _ from "lodash";
 import MovieRating from "../components/movie-rating";
+import Seo from "../components/seo";
+import { StyledLink } from "../components/styled-link";
+import TagsComponent from "../components/tags-component";
 
 const BlogPostTemplate = ({
-  data: {
-    previous,
-    next,
-    site,
-    markdownRemark: post,
-    allMarkdownRemark: { nodes: posts },
-  },
-  location,
+	data: {
+		previous,
+		next,
+		site,
+		contentfulPost: post,
+		allContentfulPost: { nodes: posts },
+	},
+	location,
 }) => {
-  const siteTitle = site.siteMetadata?.title || `Horrorshow`;
-  const social = site.siteMetadata?.social;
-  const author = post.frontmatter.author;
+	const siteTitle = site.siteMetadata?.title || `Horrorshow`;
+	const social = site.siteMetadata?.social;
+	const author = post.author;
 
-  const kebabCaseAuthor = _.kebabCase(author);
+	const kebabCaseAuthor = _.kebabCase(author);
 
-  return (
-    <Layout posts={posts} location={location} title={siteTitle} social={social}>
-      {/* <ins
+	return (
+		<Layout posts={posts} location={location} title={siteTitle} social={social}>
+			{/* <ins
         className="adsbygoogle"
         style={{ display: "block" }}
         data-ad-client="ca-pub-1907274240349428"
@@ -37,56 +37,54 @@ const BlogPostTemplate = ({
         data-ad-format="auto"
         data-full-width-responsive="true"
       /> */}
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>
-            Texto por:{" "}
-            <Link className="author-link" to={`/author/${kebabCaseAuthor}`}>
-              {author}
-            </Link>
-          </p>
-          <p>Postado em: {post.frontmatter.date}</p>
-        </header>
-        <TagsComponentWrapper>
-          <TagsComponent className="tag-post" tags={post.frontmatter.tags} />
-        </TagsComponentWrapper>
-        <Section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
-        />
-        {post.frontmatter.rating && (
-          <MovieRating rating={post.frontmatter.rating} />
-        )}
+			<article
+				className="blog-post"
+				itemScope
+				itemType="http://schema.org/Article"
+			>
+				<header>
+					<h1 itemProp="headline">{post.title}</h1>
+					<p>
+						Texto por:{" "}
+						<Link className="author-link" to={`/author/${kebabCaseAuthor}`}>
+							{author}
+						</Link>
+					</p>
+					<p>Postado em: {post.date}</p>
+				</header>
+				<TagsComponentWrapper>
+					<TagsComponent className="tag-post" tags={post.tags.tags} />
+				</TagsComponentWrapper>
+				<Section
+					dangerouslySetInnerHTML={{ __html: post.html.html }}
+					itemProp="articleBody"
+				/>
+				{post.rating && <MovieRating rating={post.rating} />}
 
-        <hr />
-        <footer>
-          <Bio postAuthor={post.frontmatter.author} />
-        </footer>
-      </article>
-      <nav className="blog-post-nav">
-        <Ul>
-          <li>
-            {previous && (
-              <StyledLink to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </StyledLink>
-            )}
-          </li>
-          <li>
-            {next && (
-              <StyledLink to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </StyledLink>
-            )}
-          </li>
-        </Ul>
-      </nav>
-      {/* <ins
+				<hr />
+				<footer>
+					<Bio postAuthor={post.author} />
+				</footer>
+			</article>
+			<nav className="blog-post-nav">
+				<Ul>
+					<li>
+						{previous && (
+							<StyledLink to={`/${previous.slug}`} rel="prev">
+								← {previous.title}
+							</StyledLink>
+						)}
+					</li>
+					<li>
+						{next && (
+							<StyledLink to={`/${next.slug}`} rel="next">
+								{next.title} →
+							</StyledLink>
+						)}
+					</li>
+				</Ul>
+			</nav>
+			{/* <ins
         className="adsbygoogle"
         style={{ display: "block" }}
         data-ad-client="ca-pub-1907274240349428"
@@ -94,26 +92,21 @@ const BlogPostTemplate = ({
         data-ad-format="auto"
         data-full-width-responsive="true"
       /> */}
-      <DisqusWrapper>
-        <Disqus
-          config={{
-            url: `http://horrorshow.com.br${location.pathname}`,
-            identifier: post.id,
-            title: post.frontmatter.title,
-          }}
-        />
-      </DisqusWrapper>
-    </Layout>
-  );
+			<DisqusWrapper>
+				<Disqus
+					config={{
+						url: `http://horrorshow.com.br${location.pathname}`,
+						identifier: post.id,
+						title: post.title,
+					}}
+				/>
+			</DisqusWrapper>
+		</Layout>
+	);
 };
 
-export const Head = ({ data: { markdownRemark: post } }) => {
-  return (
-    <Seo
-      title={post.frontmatter.title}
-      description={post.frontmatter.description || post.excerpt}
-    />
-  );
+export const Head = ({ data: { contentfulPost: post } }) => {
+	return <Seo title={post.title} description={post.description} />;
 };
 
 const TagsComponentWrapper = styled.div`
@@ -157,44 +150,35 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
-      nodes {
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-        }
-      }
+    allContentfulPost(sort: {date: DESC}) {
+    nodes {
+      slug
+      title
     }
-    markdownRemark(id: { eq: $id }) {
-      id
-      excerpt(pruneLength: 160)
+  }
+    contentfulPost (id: {eq: $id}) {
+    id
+    html {
       html
-      frontmatter {
-        title
-        author
-        date(formatString: "DD/MM/YYYY")
-        description
-        rating
-        tags
-      }
     }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
+    title
+    author
+    date(formatString: "DD/MM/YYYY")
+    description {
+      description
     }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
+    rating
+    tags {
+      tags
+    }
+  }
+    previous: contentfulPost(id: {eq: $previousPostId }) {
+      slug
+      title
+    }
+    next: contentfulPost(id: {eq: $nextPostId }) {
+      slug
+      title
     }
   }
 `;

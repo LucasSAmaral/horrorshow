@@ -11,8 +11,7 @@ import TagsComponent from "../components/tags-component";
 const BlogIndex = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Horrorshow`;
 	const social = data.site.siteMetadata?.social;
-	const posts = data.allContentfulPost.edges;
-	console.log("location", location);
+	const posts = data.allContentfulPost.nodes;
 
 	return (
 		<Layout posts={posts} location={location} title={siteTitle} social={social}>
@@ -26,15 +25,17 @@ const BlogIndex = ({ data, location }) => {
       /> */}
 			<Ol>
 				{posts.map((post) => {
-					const title = post.node.title;
-					const usePoster = post.node.usePoster;
-					const author = post.node.author;
+					const title = post.title;
+					const usePoster = post.usePoster;
+					const author = post.author;
 					const tags = post.tags?.tags;
+
+					console.log("post", post);
 
 					const kebabCaseAuthor = _.kebabCase(author);
 
 					return (
-						<li key={post.node.slug}>
+						<li key={post.slug}>
 							<article
 								className={`post-list-item ${
 									usePoster ? "with-poster" : "no-poster"
@@ -45,14 +46,14 @@ const BlogIndex = ({ data, location }) => {
 								{usePoster && (
 									<Poster
 										posterUrl={""}
-										posterImage={post.node.posterImage}
-										posterImageAlt={post.node.posterImageAlt}
+										posterImage={post.posterImage}
+										posterImageAlt={post.posterImageAlt}
 									/>
 								)}
 								<div>
 									<header>
 										<h2>
-											<Link to={post.node.slug} itemProp="url">
+											<Link to={post.slug} itemProp="url">
 												<span itemProp="headline">{title}</span>
 											</Link>
 										</h2>
@@ -68,7 +69,7 @@ const BlogIndex = ({ data, location }) => {
 											</small>
 										</p>
 										<p>
-											<small>Postado em: {post.node.date}</small>
+											<small>Postado em: {post.date}</small>
 										</p>
 									</header>
 
@@ -76,10 +77,10 @@ const BlogIndex = ({ data, location }) => {
 
 									<section>
 										<p itemProp="description">
-											{post.node.description.description}{" "}
+											{post.description.description}{" "}
 										</p>
 										<p>
-											<StyledLink to={post.node.slug} itemProp="url">
+											<StyledLink to={post.slug} itemProp="url">
 												Leia +
 											</StyledLink>
 										</p>
@@ -174,8 +175,7 @@ export const pageQuery = graphql`
       }
     }
     allContentfulPost(sort: {date: DESC}) {
-    edges {
-      node {
+      nodes {
         title
         author
         slug
@@ -194,7 +194,6 @@ export const pageQuery = graphql`
           title
         }
       }
-    }
   }
   }
 `;
