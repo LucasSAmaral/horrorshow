@@ -1,35 +1,38 @@
-import * as React from "react";
-import { StyledLink } from "./styled-link";
 import { Link } from "gatsby";
+import * as React from "react";
 import styled from "styled-components";
+import { StyledLink } from "./styled-link";
 
 const RelatedPosts = ({ title, posts }) => {
-  return (
-    <Wrapper>
-      <h1>{title}</h1>
+	return (
+		<Wrapper>
+			<h1>{title}</h1>
 
-      <ul>
-        {posts.map(post => {
-          const { slug } = post.fields;
-          const { title } = post.frontmatter;
+			<ul>
+				{posts.map((post) => {
+					const {
+						slug,
+						title,
+						description: { description },
+					} = post;
 
-          return (
-            <article key={slug}>
-              <header>
-                <h3>
-                  <Link to={slug}>{title}</Link>
-                </h3>
-              </header>
-              <section>
-                <p>{post.frontmatter.description || post.excerpt}</p>
-                <StyledLink to={slug}>Leia +</StyledLink>
-              </section>
-            </article>
-          );
-        })}
-      </ul>
-    </Wrapper>
-  );
+					return (
+						<article key={slug}>
+							<header>
+								<h3>
+									<Link to={`/${slug}`}>{title}</Link>
+								</h3>
+							</header>
+							<section>
+								<p>{description}</p>
+								<StyledLink to={`/${slug}`}>Leia +</StyledLink>
+							</section>
+						</article>
+					);
+				})}
+			</ul>
+		</Wrapper>
+	);
 };
 
 const Wrapper = styled.div`
