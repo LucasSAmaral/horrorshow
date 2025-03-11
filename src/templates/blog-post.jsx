@@ -115,6 +115,12 @@ const TagsComponentWrapper = styled.div`
 
 const Section = styled.section`
   text-align: justify;
+
+  figure {
+	img {
+		width: 100%;
+	}
+  }
 `;
 
 const Ul = styled.ul`
