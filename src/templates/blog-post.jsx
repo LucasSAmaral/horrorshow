@@ -121,6 +121,22 @@ const Section = styled.section`
 		width: 100%;
 	}
   }
+
+  .gatsby-resp-iframe-wrapper {
+	padding-bottom: 50%;
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 1.0725rem;
+	
+	iframe {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+  }
 `;
 
 const Ul = styled.ul`
