@@ -30,8 +30,6 @@ const BlogIndex = ({ data, location }) => {
 					const author = post.author;
 					const tags = post.tags?.tags;
 
-					console.log("post", post);
-
 					const kebabCaseAuthor = _.kebabCase(author);
 
 					return (
