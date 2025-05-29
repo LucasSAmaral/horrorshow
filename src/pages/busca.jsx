@@ -1,117 +1,122 @@
-import React, { useState } from "react";
 import { Link, graphql } from "gatsby";
+import React, { useState } from "react";
 
+import _ from "lodash";
+import styled from "styled-components";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import styled from "styled-components";
 import { StyledLink } from "../components/styled-link";
-import _ from "lodash";
 import TagsComponent from "../components/tags-component";
 
 const Busca = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Horrorshow`;
-  const social = data.site.siteMetadata?.social;
-  const allPosts = data.allMarkdownRemark.nodes;
+	const siteTitle = data.site.siteMetadata?.title || `Horrorshow`;
+	const social = data.site.siteMetadata?.social;
+	const allPosts = data.allContentfulPost.nodes;
 
-  const emptyQuery = "";
+	const emptyQuery = "";
 
-  const [state, setState] = useState({ filteredData: [], query: emptyQuery });
+	const [state, setState] = useState({ filteredData: [], query: emptyQuery });
 
-  const handleInputChange = event => {
-    const query = event.target.value;
-    const lowerCaseQuery = query.toLowerCase();
-    const posts = data.allMarkdownRemark.nodes || [];
+	const handleInputChange = (event) => {
+		const query = event.target.value;
+		const lowerCaseQuery = query.toLowerCase();
+		const posts = data.allContentfulPost.nodes || [];
 
-    const filteredData = posts.filter(post => {
-      const { author, description, title, tags } = post.frontmatter;
+		const filteredData = posts.filter((post) => {
+			const {
+				author,
+				description: { description },
+				title,
+				tags: { tags },
+			} = post;
 
-      return (
-        author.toLowerCase().includes(lowerCaseQuery) ||
-        description?.toLowerCase().includes(lowerCaseQuery) ||
-        title.toLowerCase().includes(lowerCaseQuery) ||
-        (tags && tags.join("").toLowerCase().includes(lowerCaseQuery))
-      );
-    });
+			return (
+				author.toLowerCase().includes(lowerCaseQuery) ||
+				description?.toLowerCase().includes(lowerCaseQuery) ||
+				title.toLowerCase().includes(lowerCaseQuery) ||
+				(tags && tags.join("").toLowerCase().includes(lowerCaseQuery))
+			);
+		});
 
-    setState({ query, filteredData });
-  };
+		setState({ query, filteredData });
+	};
 
-  const { filteredData, query } = state;
+	const { filteredData, query } = state;
 
-  const hasSearchResults = filteredData && query !== emptyQuery;
+	const hasSearchResults = filteredData && query !== emptyQuery;
 
-  const posts = hasSearchResults ? filteredData : allPosts;
+	const posts = hasSearchResults ? filteredData : allPosts;
 
-  return (
-    <Layout posts={posts} location={location} title={siteTitle} social={social}>
-      <SearchWrapper>
-        <SearchTitle>Busca</SearchTitle>
+	return (
+		<Layout posts={posts} location={location} title={siteTitle} social={social}>
+			<SearchWrapper>
+				<SearchTitle>Busca</SearchTitle>
 
-        <Input
-          type="text"
-          aria-label="Search"
-          placeholder="Digite para filtrar os posts"
-          onChange={handleInputChange}
-        />
-      </SearchWrapper>
-      <Ol>
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug;
-          const author = post.frontmatter.author;
-          const tags = post.frontmatter.tags;
+				<Input
+					type="text"
+					aria-label="Search"
+					placeholder="Digite para filtrar os posts"
+					onChange={handleInputChange}
+				/>
+			</SearchWrapper>
+			<Ol>
+				{posts.map((post) => {
+					const title = post.title || post.slug;
+					const author = post.author;
+					const tags = post.tags.tags;
 
-          const kebabCaseAuthor = _.kebabCase(author);
+					const kebabCaseAuthor = _.kebabCase(author);
 
-          return (
-            <li key={post.fields.slug}>
-              <article
-                className={`post-list-item no-poster`}
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <div>
-                  <header>
-                    <h2>
-                      <Link to={post.fields.slug} itemProp="url">
-                        <span itemProp="headline">{title}</span>
-                      </Link>
-                    </h2>
-                    <p>
-                      <small>
-                        Texto por:{" "}
-                        <Link
-                          className="author-link"
-                          to={`/author/${kebabCaseAuthor}`}
-                        >
-                          {author}
-                        </Link>
-                      </small>
-                    </p>
-                    <p>
-                      <small>Postado em: {post.frontmatter.date}</small>
-                    </p>
-                  </header>
+					return (
+						<li key={post.slug}>
+							<article
+								className={`post-list-item no-poster`}
+								itemScope
+								itemType="http://schema.org/Article"
+							>
+								<div>
+									<header>
+										<h2>
+											<Link to={post.slug} itemProp="url">
+												<span itemProp="headline">{title}</span>
+											</Link>
+										</h2>
+										<p>
+											<small>
+												Texto por:{" "}
+												<Link
+													className="author-link"
+													to={`/author/${kebabCaseAuthor}`}
+												>
+													{author}
+												</Link>
+											</small>
+										</p>
+										<p>
+											<small>Postado em: {post.date}</small>
+										</p>
+									</header>
 
-                  <TagsComponent tags={tags} />
+									<TagsComponent tags={tags} />
 
-                  <section>
-                    <p itemProp="description">
-                      {post.frontmatter.description || post.excerpt}{" "}
-                    </p>
-                    <p>
-                      <StyledLink to={post.fields.slug} itemProp="url">
-                        Leia +
-                      </StyledLink>
-                    </p>
-                  </section>
-                </div>
-              </article>
-            </li>
-          );
-        })}
-      </Ol>
-    </Layout>
-  );
+									<section>
+										<p itemProp="description">
+											{post.description.description}{" "}
+										</p>
+										<p>
+											<StyledLink to={post.slug} itemProp="url">
+												Leia +
+											</StyledLink>
+										</p>
+									</section>
+								</div>
+							</article>
+						</li>
+					);
+				})}
+			</Ol>
+		</Layout>
+	);
 };
 
 const SearchWrapper = styled.div`
@@ -203,17 +208,16 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+    allContentfulPost(sort:  { date: DESC } ) {
       nodes {
-        excerpt
-        fields {
           slug
-        }
-        frontmatter {
           date(formatString: "DD/MM/YYYY")
           author
           title
+          description {
           description
+        }
+        tags {
           tags
         }
       }

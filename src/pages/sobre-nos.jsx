@@ -1,30 +1,30 @@
-import * as React from "react";
 import { graphql } from "gatsby";
+import * as React from "react";
 
+import styled from "styled-components";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import styled from "styled-components";
 
 const NotFoundPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title;
-  const social = data.site.siteMetadata?.social;
-  const posts = data.allMarkdownRemark.nodes;
+	const siteTitle = data.site.siteMetadata.title;
+	const social = data.site.siteMetadata?.social;
+	const posts = data.allContentfulPost.nodes;
 
-  return (
-    <Layout posts={posts} location={location} title={siteTitle} social={social}>
-      <Wrapper>
-        <h1>Sobre Nós</h1>
-        <p>
-          Aqui falamos e divagamos sobre o que vimos recentemente relacionado ao
-          gênero terror, mas não necessáriamente só terror.
-        </p>
-        <p>
-          Falamos sobre terror e suspense de forma descontraída. Seja sobre
-          filmes, séries, hqs e games. Até mesmo novelas. Por que não?
-        </p>
-      </Wrapper>
-    </Layout>
-  );
+	return (
+		<Layout posts={posts} location={location} title={siteTitle} social={social}>
+			<Wrapper>
+				<h1>Sobre Nós</h1>
+				<p>
+					Aqui falamos e divagamos sobre o que vimos recentemente relacionado ao
+					gênero terror, mas não necessáriamente só terror.
+				</p>
+				<p>
+					Falamos sobre terror e suspense de forma descontraída. Seja sobre
+					filmes, séries, hqs e games. Até mesmo novelas. Por que não?
+				</p>
+			</Wrapper>
+		</Layout>
+	);
 };
 
 export const Head = () => <Seo title="Sobre Nós" />;
@@ -65,14 +65,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+    allContentfulPost(sort: { date: DESC } ) {
       nodes {
-        fields {
           slug
-        }
-        frontmatter {
           title
-        }
       }
     }
   }

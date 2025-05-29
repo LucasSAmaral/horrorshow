@@ -1,31 +1,33 @@
-import * as React from "react";
 import { graphql } from "gatsby";
+import * as React from "react";
 
-import Layout from "../components/layout";
-import Seo from "../components/seo";
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
 
 const NotFoundPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title;
-  const social = data.site.siteMetadata?.social;
-  const posts = data.allMarkdownRemark.nodes;
+	const siteTitle = data.site.siteMetadata.title;
+	const social = data.site.siteMetadata?.social;
+	const posts = data.allContentfulPost.nodes;
 
-  return (
-    <Layout posts={posts} location={location} title={siteTitle} social={social}>
-      <Wrapper>
-        <h1>404: Nada pra ver aqui</h1>
-        <StaticImage
-          layout="constrained"
-          formats={["auto", "webp", "avif"]}
-          src="../images/blood-hand.png"
-          width={400}
-          quality={95}
-          alt="Mancha de sangue em forma de mão"
-        />
-      </Wrapper>
-    </Layout>
-  );
+	console.log("posts", posts);
+
+	return (
+		<Layout posts={posts} location={location} title={siteTitle} social={social}>
+			<Wrapper>
+				<h1>404: Nada pra ver aqui</h1>
+				<StaticImage
+					layout="constrained"
+					formats={["auto", "webp", "avif"]}
+					src="../images/blood-hand.png"
+					width={400}
+					quality={95}
+					alt="Mancha de sangue em forma de mão"
+				/>
+			</Wrapper>
+		</Layout>
+	);
 };
 
 export const Head = () => <Seo title="404" />;
@@ -70,14 +72,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+    allContentfulPost(sort: {  date: DESC } ) {
       nodes {
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-        }
+        slug
+        title
       }
     }
   }
